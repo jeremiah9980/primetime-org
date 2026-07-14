@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Primetime CMS — Admin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="cms-header">
+    <h1>Primetime <span class="badge">CMS</span></h1>
+    <div class="cms-actions">
+      <label class="file-input-label" for="file-load">📂 Load JSON file<input id="file-load" type="file" accept="application/json" style="display:none;"></label>
+      <button id="btn-validate" class="cms-btn">✓ Validate</button>
+      <button id="btn-export" class="cms-btn primary">⬇ Export for GitHub</button>
+    </div>
+  </header>
+
+  <div class="cms-shell">
+    <nav class="cms-tabs">
+      <button id="tab-org" class="cms-tab">Org Info</button>
+      <button id="tab-board" class="cms-tab">Board</button>
+      <button id="tab-teams" class="cms-tab">Teams</button>
+      <button id="tab-roster" class="cms-tab">Roster</button>
+      <button id="tab-fundraising" class="cms-tab">Fundraising</button>
+      <button id="tab-docs" class="cms-tab">Docs</button>
+      <button id="tab-policies" class="cms-tab">Policies</button>
+      <button id="tab-bylaws" class="cms-tab">Bylaws</button>
+      <button id="tab-finances" class="cms-tab">Finances</button>
+      <button id="tab-seo" class="cms-tab">SEO</button>
+    </nav>
+    <main>
+      <p class="hint" style="padding:1rem 2rem 0;">This dashboard edits <code>cms/content/primetime-site.json</code> — the single file every public page reads from. Nothing here is secure or authenticated; GitHub Pages is static. Use it locally, or put <code>/cms/admin/</code> behind real auth (e.g. Cloudflare Access) before sharing the link with anyone but trusted board members.</p>
+      <section id="panel-org" class="cms-panel"></section>
+      <section id="panel-board" class="cms-panel" hidden></section>
+      <section id="panel-teams" class="cms-panel" hidden></section>
+      <section id="panel-roster" class="cms-panel" hidden></section>
+      <section id="panel-fundraising" class="cms-panel" hidden></section>
+      <section id="panel-docs" class="cms-panel" hidden></section>
+      <section id="panel-policies" class="cms-panel" hidden></section>
+      <section id="panel-bylaws" class="cms-panel" hidden></section>
+      <section id="panel-finances" class="cms-panel" hidden></section>
+      <section id="panel-seo" class="cms-panel" hidden></section>
+    </main>
+  </div>
+
+  <div id="status-banner" class="status-banner"></div>
+  <script src="app.js"></script>
+</body>
+</html>

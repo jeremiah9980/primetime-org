@@ -35,3 +35,16 @@ If an individual team (e.g. Primetime Elite 12U) wants its own secondary accent 
 the org site, add a scoped override block in `assets/css/theme-primetime.css` keyed to that
 team's page (e.g. `body.pt-page.team-elite { --gold-2: ...; }`) rather than changing the
 shared tokens, so the org site and other teams stay visually consistent.
+
+## Logo placement
+
+The logo is wired into four spots and needs one file: `public/images/logos/primetime-logo.png`.
+
+- **Nav bar** (every page) — small badge, square crop looks best
+- **Footer** (every page) — small badge, same treatment as nav
+- **Homepage hero** — large showcase placement (`.logo-showcase` / `.hero-logo-img`), this is
+  the one spot that can handle a wide, detailed crest rather than a tight square icon
+- **Homepage motto banner** — two small badge instances flanking the tagline
+
+All four have a CSS/JS fallback (`onerror` swaps in a styled text badge) so the site never
+shows a broken-image icon if the file is missing or the filename doesn't match exactly.

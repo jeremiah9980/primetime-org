@@ -7,6 +7,8 @@
   <title>Primetime 12U — Primetime Softball Organization</title>
   <meta name="description" content="Primetime 12U team hub: roster, schedule, tournament tracker, and more.">
   <script src="../assets/js/theme-init.js"></script>
+  <script>window.PRIMETIME_CONTENT_URL = "../cms/content/primetime-site.json";</script>
+  <link rel="icon" href="../public/images/logos/primetime-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -18,9 +20,12 @@
 <nav class="pt-nav">
   <div class="pt-nav-inner">
     <a class="pt-brand" href="../index.html">
-      <span class="pt-logo">PT</span>
+      <span class="pt-logo">
+        <img src="../public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;">PT</span>
+      </span>
       <span>
-        <strong>Primetime</strong>
+        <strong data-pt-org-nickname>Primetime</strong>
         <span>Softball Organization</span>
       </span>
     </a>
@@ -46,10 +51,11 @@
 </nav>
 <main id="team-home">
   <section class="pt-hero section-pad" aria-label="Primetime 12U home">
-    <div class="hero-copy reveal-card">
+    <div class="hero-copy reveal-card" data-pt-team-info="primetime-12u">
       <p class="eyebrow">Primetime Softball Organization &bull; 12U</p>
       <h1>Primetime <span>12U</span></h1>
-      <p class="hero-lede">Our core competitive squad, sharpening skills and tournament experience as players grow into the next level of travel softball. Sharper skills. Bigger stage.</p>
+      <p class="hero-lede" data-pt-field="description">Our core competitive squad, sharpening skills and tournament experience as players grow into the next level of travel softball.</p>
+      <p class="hero-lede" data-pt-field="tagline" style="margin-top:-1rem;">Sharper skills. Bigger stage.</p>
       <div class="hero-actions">
         <a href="../roster/primetime-12u.html" class="btn primary">Meet the Team</a>
         <a href="#schedule" class="btn ghost">View Schedule</a>
@@ -90,7 +96,7 @@
   <section class="pain-solution section-pad compact" id="team-info">
     <div>
       <p class="eyebrow">Team Identity</p>
-      <h2>Sharper skills. Bigger stage.</h2>
+      <h2>Coached by <span data-pt-team-coach="primetime-12u">our coaching staff</span></h2>
     </div>
     <div class="solution-grid">
       <article><span>01</span><h3>Team-first culture</h3><p>Discipline, energy, accountability, and relentless effort on every rep.</p></article>
@@ -109,7 +115,7 @@
       <article class="elite-card" id="schedule">
         <div class="eyebrow">Upcoming Schedule</div>
         <h2>GameChanger</h2>
-        <p>Live schedule data will display here once the Primetime 12U GameChanger URL is connected.</p>
+        <p>Live schedule data will display here once the Primetime 12U GameChanger URL is connected via the CMS.</p>
         <div class="schedule-list">
           <div class="schedule-row">
             <div class="date-box"><span>TBD</span><strong>--</strong></div>
@@ -117,7 +123,7 @@
             <span>TBD</span>
           </div>
         </div>
-        <div class="gc-schedule-panel">Connect GameChanger to display live schedule data here.</div>
+        <div class="gc-schedule-panel" data-pt-gamechanger-schedule="primetime-12u">Connect GameChanger in the CMS to display a live schedule link here.</div>
       </article>
       <article class="elite-card" id="ncs-dashboard">
         <div class="eyebrow">Tournament Tracker</div>
@@ -127,7 +133,7 @@
           <div class="tracker-row"><b>NCS</b><small>Upcoming tournaments</small><span class="status-pill">Soon</span></div>
           <div class="tracker-row"><b>Scores</b><small>Pool and bracket games</small><span class="status-pill">Soon</span></div>
         </div>
-        <div class="ncs-panel">Tournament tracker data will populate here once connected.</div>
+        <div class="ncs-panel" data-pt-ncs="primetime-12u">Connect NCS in the CMS to display a live tracker link here.</div>
       </article>
     </div>
   </section>
@@ -137,7 +143,7 @@
       <article class="elite-card">
         <div class="eyebrow">Roster Preview</div>
         <h2>12U Roster</h2>
-        <div class="roster-preview">
+        <div class="roster-preview" data-pt-roster-preview="primetime-12u">
           <div class="roster-row"><b>#--</b><small>Player Name</small><span>POS</span></div>
           <div class="roster-row"><b>#--</b><small>Player Name</small><span>POS</span></div>
           <div class="roster-row"><b>#--</b><small>Player Name</small><span>POS</span></div>
@@ -175,8 +181,11 @@
 <footer class="elite-footer">
   <div class="elite-footer-grid">
     <div>
-      <span class="pt-logo-sm">PT</span>
-      <p>Primetime Softball Organization</p>
+      <span class="pt-logo-sm" style="width:64px;height:64px;border-radius:18px;margin-bottom:1rem;background:linear-gradient(135deg, var(--gold), var(--gold-2));">
+        <img src="../public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;color:var(--ink);font-family:var(--display);">PT</span>
+      </span>
+      <p data-pt-org-name>Primetime Softball Organization</p>
       <p>Select &amp; Travel Fastpitch</p>
     </div>
     <div>
@@ -195,11 +204,13 @@
       <p><a href="../fundraising.html">Sponsor / Donate</a></p>
       <p><a href="../coaching.html">Coaching Staff</a></p>
       <p><a href="../contact.html">Contact Us</a></p>
+      <p><a data-pt-instagram href="#" target="_blank" rel="noopener">Instagram</a> &middot; <a data-pt-facebook href="#" target="_blank" rel="noopener">Facebook</a></p>
     </div>
   </div>
   <div class="elite-footer-bottom">
-    <p>&copy; 2026 Primetime Softball Organization. All Rights Reserved.</p>
+    <p>&copy; 2026 <span data-pt-org-name>Primetime Softball Organization</span>. All Rights Reserved.</p>
   </div>
 </footer><script src="../assets/js/nav.js"></script>
+<script src="../assets/js/primetime-content-renderer.js"></script>
 </body>
 </html>

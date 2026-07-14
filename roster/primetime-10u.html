@@ -7,6 +7,8 @@
   <title>Primetime 10U Roster — Primetime Softball Organization</title>
   <meta name="description" content="Full team roster for Primetime 10U.">
   <script src="../assets/js/theme-init.js"></script>
+  <script>window.PRIMETIME_CONTENT_URL = "../cms/content/primetime-site.json";</script>
+  <link rel="icon" href="../public/images/logos/primetime-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -18,9 +20,12 @@
 <nav class="pt-nav">
   <div class="pt-nav-inner">
     <a class="pt-brand" href="../index.html">
-      <span class="pt-logo">PT</span>
+      <span class="pt-logo">
+        <img src="../public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;">PT</span>
+      </span>
       <span>
-        <strong>Primetime</strong>
+        <strong data-pt-org-nickname>Primetime</strong>
         <span>Softball Organization</span>
       </span>
     </a>
@@ -48,11 +53,11 @@
   <div class="section-heading left">
     <p class="eyebrow">Primetime 10U &bull; 10U</p>
     <h2>Team Roster</h2>
-    <p>Jersey numbers, positions, and player profiles for Primetime 10U. Coaches: replace the placeholder rows below in <code>config/teams.config.json</code> — the table renders directly from that file.</p>
+    <p>Jersey numbers, positions, and player profiles for Primetime 10U. Coaches: manage this roster through the CMS at <code>cms/admin/</code> — this table renders live from <code>cms/content/primetime-site.json</code>.</p>
   </div>
 
   <div class="elite-card" style="max-width:1100px;margin:0 auto;">
-    <table id="roster-table" style="width:100%;border-collapse:collapse;">
+    <table style="width:100%;border-collapse:collapse;">
       <thead>
         <tr style="text-align:left;border-bottom:1px solid var(--line);">
           <th style="padding:.75rem;color:var(--muted);text-transform:uppercase;font-size:.72rem;letter-spacing:.08em;">#</th>
@@ -61,7 +66,7 @@
           <th style="padding:.75rem;color:var(--muted);text-transform:uppercase;font-size:.72rem;letter-spacing:.08em;">Bats/Throws</th>
         </tr>
       </thead>
-      <tbody id="roster-body">
+      <tbody data-pt-roster="primetime-10u">
         <tr><td colspan="4" style="padding:1rem;color:var(--muted);">Loading roster&hellip;</td></tr>
       </tbody>
     </table>
@@ -71,31 +76,14 @@
     <a class="btn ghost" href="../teams/primetime-10u.html">Back to Team Hub</a>
   </div>
 </main>
-<script>
-fetch('../config/teams.config.json').then(r => r.json()).then(data => {
-  var team = data.teams.find(function (x) { return x.id === 'primetime-10u'; });
-  var body = document.getElementById('roster-body');
-  if (!team || !team.roster || !team.roster.length) {
-    body.innerHTML = '<tr><td colspan="4" style="padding:1rem;color:var(--muted);">Roster coming soon &mdash; add players in config/teams.config.json.</td></tr>';
-    return;
-  }
-  body.innerHTML = team.roster.map(function (p) {
-    return '<tr style="border-bottom:1px solid var(--line);">' +
-      '<td style="padding:.75rem;font-weight:800;color:var(--gold);">#' + (p.number || '--') + '</td>' +
-      '<td style="padding:.75rem;">' + (p.name || 'Player') + '</td>' +
-      '<td style="padding:.75rem;color:var(--muted);">' + (p.position || 'TBD') + '</td>' +
-      '<td style="padding:.75rem;color:var(--muted);">' + (p.batsThrows || '&mdash;') + '</td>' +
-    '</tr>';
-  }).join('');
-}).catch(function () {
-  document.getElementById('roster-body').innerHTML = '<tr><td colspan="4" style="padding:1rem;color:var(--muted);">Could not load roster data.</td></tr>';
-});
-</script>
 <footer class="elite-footer">
   <div class="elite-footer-grid">
     <div>
-      <span class="pt-logo-sm">PT</span>
-      <p>Primetime Softball Organization</p>
+      <span class="pt-logo-sm" style="width:64px;height:64px;border-radius:18px;margin-bottom:1rem;background:linear-gradient(135deg, var(--gold), var(--gold-2));">
+        <img src="../public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;color:var(--ink);font-family:var(--display);">PT</span>
+      </span>
+      <p data-pt-org-name>Primetime Softball Organization</p>
       <p>Select &amp; Travel Fastpitch</p>
     </div>
     <div>
@@ -114,11 +102,13 @@ fetch('../config/teams.config.json').then(r => r.json()).then(data => {
       <p><a href="../fundraising.html">Sponsor / Donate</a></p>
       <p><a href="../coaching.html">Coaching Staff</a></p>
       <p><a href="../contact.html">Contact Us</a></p>
+      <p><a data-pt-instagram href="#" target="_blank" rel="noopener">Instagram</a> &middot; <a data-pt-facebook href="#" target="_blank" rel="noopener">Facebook</a></p>
     </div>
   </div>
   <div class="elite-footer-bottom">
-    <p>&copy; 2026 Primetime Softball Organization. All Rights Reserved.</p>
+    <p>&copy; 2026 <span data-pt-org-name>Primetime Softball Organization</span>. All Rights Reserved.</p>
   </div>
 </footer><script src="../assets/js/nav.js"></script>
+<script src="../assets/js/primetime-content-renderer.js"></script>
 </body>
 </html>

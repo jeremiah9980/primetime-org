@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Primetime Site Content",
+  "type": "object",
+  "required": ["org", "board", "teams", "fundraising", "docs", "policies", "bylaws", "finances", "seo"],
+  "properties": {
+    "org": {
+      "type": "object",
+      "required": ["name", "nickname", "tagline", "contact"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "nickname": { "type": "string", "minLength": 1 },
+        "tagline": { "type": "string" },
+        "location": { "type": "string" },
+        "founded": { "type": "string" },
+        "missionStatement": { "type": "string" },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "generalEmail": { "type": "string" },
+            "boardEmail": { "type": "string" },
+            "phone": { "type": "string" }
+          }
+        },
+        "social": {
+          "type": "object",
+          "properties": {
+            "instagram": { "type": "string" },
+            "facebook": { "type": "string" }
+          }
+        }
+      }
+    },
+    "board": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "name"],
+        "properties": {
+          "role": { "type": "string", "minLength": 1 },
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "teams": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "division", "roster"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string", "minLength": 1 },
+          "division": { "type": "string" },
+          "tagline": { "type": "string" },
+          "description": { "type": "string" },
+          "badge": { "type": "string" },
+          "headCoach": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "email": { "type": "string" },
+              "bio": { "type": "string" }
+            }
+          },
+          "gamechanger": {
+            "type": "object",
+            "properties": {
+              "scheduleUrl": { "type": "string" },
+              "statsUrl": { "type": "string" }
+            }
+          },
+          "ncs": {
+            "type": "object",
+            "properties": { "teamUrl": { "type": "string" } }
+          },
+          "roster": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name"],
+              "properties": {
+                "number": { "type": "string" },
+                "name": { "type": "string", "minLength": 1 },
+                "position": { "type": "string" },
+                "batsThrows": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "fundraising": {
+      "type": "object",
+      "properties": {
+        "intro": { "type": "string" },
+        "sponsors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "logo": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "docs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "description": { "type": "string" },
+          "url": { "type": "string" }
+        }
+      }
+    },
+    "policies": {
+      "type": "object",
+      "properties": {
+        "playerConduct": { "type": "string" },
+        "parentConduct": { "type": "string" },
+        "attendance": { "type": "string" },
+        "playingTime": { "type": "string" },
+        "grievance": { "type": "string" }
+      }
+    },
+    "bylaws": {
+      "type": "object",
+      "properties": {
+        "purpose": { "type": "string" },
+        "membership": { "type": "string" },
+        "governance": { "type": "string" },
+        "meetings": { "type": "string" },
+        "amendments": { "type": "string" }
+      }
+    },
+    "finances": {
+      "type": "object",
+      "properties": {
+        "seasonFees": { "type": "string" },
+        "whereFundsGo": { "type": "string" },
+        "budgetSummary": { "type": "string" }
+      }
+    },
+    "seo": {
+      "type": "object",
+      "properties": {
+        "description": { "type": "string" },
+        "keywords": { "type": "string" }
+      }
+    }
+  }
+}

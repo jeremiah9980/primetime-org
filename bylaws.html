@@ -7,6 +7,8 @@
   <title>Bylaws — Primetime Softball Organization</title>
   <meta name="description" content="Primetime Softball Organization governing bylaws.">
   <script src="assets/js/theme-init.js"></script>
+  <script>window.PRIMETIME_CONTENT_URL = "cms/content/primetime-site.json";</script>
+  <link rel="icon" href="public/images/logos/primetime-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
@@ -18,9 +20,12 @@
 <nav class="pt-nav">
   <div class="pt-nav-inner">
     <a class="pt-brand" href="index.html">
-      <span class="pt-logo">PT</span>
+      <span class="pt-logo">
+        <img src="public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;">PT</span>
+      </span>
       <span>
-        <strong>Primetime</strong>
+        <strong data-pt-org-nickname>Primetime</strong>
         <span>Softball Organization</span>
       </span>
     </a>
@@ -51,23 +56,26 @@
   </div>
   <div class="prose">
     <h3>Article I — Name &amp; Purpose</h3>
-    <p>Primetime Softball Organization exists to provide competitive travel fastpitch softball opportunities for youth athletes across its member teams.</p>
+    <p data-pt-bylaws="purpose">Primetime Softball Organization exists to provide competitive travel fastpitch softball opportunities for youth athletes across its member teams.</p>
     <h3>Article II — Membership</h3>
-    <p>Membership is open to players and families rostered on a Primetime team in good standing with organization policies and fee obligations.</p>
+    <p data-pt-bylaws="membership">Membership is open to players and families rostered on a Primetime team in good standing with organization policies and fee obligations.</p>
     <h3>Article III — Board of Directors</h3>
-    <p>The board consists of the President, Vice President, Treasurer, Secretary, and team representatives as outlined on the <a href="board.html">Board</a> page.</p>
+    <p data-pt-bylaws="governance">The board consists of the President, Vice President, Treasurer, Secretary, and team representatives as outlined on the <a href="board.html">Board</a> page.</p>
     <h3>Article IV — Meetings</h3>
-    <p>The board meets regularly during the season; meeting schedules and minutes are available to members upon request.</p>
+    <p data-pt-bylaws="meetings">The board meets regularly during the season; meeting schedules and minutes are available to members upon request.</p>
     <h3>Article V — Amendments</h3>
-    <p>These bylaws may be amended by majority board vote at a scheduled meeting.</p>
-    <p><em>This is placeholder bylaws text — replace with your organization's actual governing document, or link a PDF from <a href="docs.html">Docs</a>.</em></p>
+    <p data-pt-bylaws="amendments">These bylaws may be amended by majority board vote at a scheduled meeting.</p>
+    <p><em>Edit these articles through the CMS at <code>cms/admin/</code>, or replace with your organization's actual governing document.</em></p>
   </div>
 </main>
 <footer class="elite-footer">
   <div class="elite-footer-grid">
     <div>
-      <span class="pt-logo-sm">PT</span>
-      <p>Primetime Softball Organization</p>
+      <span class="pt-logo-sm" style="width:64px;height:64px;border-radius:18px;margin-bottom:1rem;background:linear-gradient(135deg, var(--gold), var(--gold-2));">
+        <img src="public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;color:var(--ink);font-family:var(--display);">PT</span>
+      </span>
+      <p data-pt-org-name>Primetime Softball Organization</p>
       <p>Select &amp; Travel Fastpitch</p>
     </div>
     <div>
@@ -86,11 +94,13 @@
       <p><a href="fundraising.html">Sponsor / Donate</a></p>
       <p><a href="coaching.html">Coaching Staff</a></p>
       <p><a href="contact.html">Contact Us</a></p>
+      <p><a data-pt-instagram href="#" target="_blank" rel="noopener">Instagram</a> &middot; <a data-pt-facebook href="#" target="_blank" rel="noopener">Facebook</a></p>
     </div>
   </div>
   <div class="elite-footer-bottom">
-    <p>&copy; 2026 Primetime Softball Organization. All Rights Reserved.</p>
+    <p>&copy; 2026 <span data-pt-org-name>Primetime Softball Organization</span>. All Rights Reserved.</p>
   </div>
 </footer><script src="assets/js/nav.js"></script>
+<script src="assets/js/primetime-content-renderer.js"></script>
 </body>
 </html>

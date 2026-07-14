@@ -7,6 +7,8 @@
   <title>Finances — Primetime Softball Organization</title>
   <meta name="description" content="Season fees and financial transparency for Primetime Softball Organization.">
   <script src="assets/js/theme-init.js"></script>
+  <script>window.PRIMETIME_CONTENT_URL = "cms/content/primetime-site.json";</script>
+  <link rel="icon" href="public/images/logos/primetime-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
@@ -18,9 +20,12 @@
 <nav class="pt-nav">
   <div class="pt-nav-inner">
     <a class="pt-brand" href="index.html">
-      <span class="pt-logo">PT</span>
+      <span class="pt-logo">
+        <img src="public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;">PT</span>
+      </span>
       <span>
-        <strong>Primetime</strong>
+        <strong data-pt-org-nickname>Primetime</strong>
         <span>Softball Organization</span>
       </span>
     </a>
@@ -51,18 +56,21 @@
   </div>
   <div class="prose">
     <div class="elite-card-grid">
-      <article class="elite-card"><h3>Season Fees</h3><p>Placeholder — list per-team season dues, what they cover (uniforms, tournament fees, facility rental), and payment plan options.</p></article>
-      <article class="elite-card"><h3>Where Fundraising Goes</h3><p>Placeholder — travel fund, equipment, tournament entry fees, scholarships for families in need.</p></article>
-      <article class="elite-card"><h3>Budget Summary</h3><p>Placeholder — link or embed an annual budget summary reviewed by the board and treasurer.</p></article>
+      <article class="elite-card"><h3>Season Fees</h3><p data-pt-finances="seasonFees">Placeholder — list per-team season dues, what they cover (uniforms, tournament fees, facility rental), and payment plan options.</p></article>
+      <article class="elite-card"><h3>Where Fundraising Goes</h3><p data-pt-finances="whereFundsGo">Placeholder — travel fund, equipment, tournament entry fees, scholarships for families in need.</p></article>
+      <article class="elite-card"><h3>Budget Summary</h3><p data-pt-finances="budgetSummary">Placeholder — link or embed an annual budget summary reviewed by the board and treasurer.</p></article>
     </div>
-    <p style="margin-top:2rem;"><em>Replace with your organization's real fee schedule and budget summary. See also <a href="fundraising.html">Fundraising</a>.</em></p>
+    <p style="margin-top:2rem;"><em>Edit these through the CMS at <code>cms/admin/</code>. See also <a href="fundraising.html">Fundraising</a>.</em></p>
   </div>
 </main>
 <footer class="elite-footer">
   <div class="elite-footer-grid">
     <div>
-      <span class="pt-logo-sm">PT</span>
-      <p>Primetime Softball Organization</p>
+      <span class="pt-logo-sm" style="width:64px;height:64px;border-radius:18px;margin-bottom:1rem;background:linear-gradient(135deg, var(--gold), var(--gold-2));">
+        <img src="public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;color:var(--ink);font-family:var(--display);">PT</span>
+      </span>
+      <p data-pt-org-name>Primetime Softball Organization</p>
       <p>Select &amp; Travel Fastpitch</p>
     </div>
     <div>
@@ -81,11 +89,13 @@
       <p><a href="fundraising.html">Sponsor / Donate</a></p>
       <p><a href="coaching.html">Coaching Staff</a></p>
       <p><a href="contact.html">Contact Us</a></p>
+      <p><a data-pt-instagram href="#" target="_blank" rel="noopener">Instagram</a> &middot; <a data-pt-facebook href="#" target="_blank" rel="noopener">Facebook</a></p>
     </div>
   </div>
   <div class="elite-footer-bottom">
-    <p>&copy; 2026 Primetime Softball Organization. All Rights Reserved.</p>
+    <p>&copy; 2026 <span data-pt-org-name>Primetime Softball Organization</span>. All Rights Reserved.</p>
   </div>
 </footer><script src="assets/js/nav.js"></script>
+<script src="assets/js/primetime-content-renderer.js"></script>
 </body>
 </html>

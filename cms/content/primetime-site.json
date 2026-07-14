@@ -1,0 +1,97 @@
+{
+  "org": {
+    "name": "Primetime Softball Organization",
+    "nickname": "Primetime",
+    "tagline": "Select & Travel Fastpitch Softball",
+    "location": "[ENTER CITY, STATE]",
+    "founded": "[ENTER YEAR]",
+    "missionStatement": "To develop competitive, well-rounded softball players through disciplined coaching, meaningful playing time, and a supportive team-first culture, while preparing athletes for the next level of the game.",
+    "contact": {
+      "generalEmail": "info@primetimesoftball.example",
+      "boardEmail": "board@primetimesoftball.example",
+      "phone": "[ENTER PHONE]"
+    },
+    "social": {
+      "instagram": "[ENTER INSTAGRAM URL]",
+      "facebook": "[ENTER FACEBOOK URL]"
+    }
+  },
+  "board": [
+    { "role": "President", "name": "[ENTER NAME]" },
+    { "role": "Vice President", "name": "[ENTER NAME]" },
+    { "role": "Treasurer", "name": "[ENTER NAME]" },
+    { "role": "Secretary", "name": "[ENTER NAME]" },
+    { "role": "Team Rep — 10U", "name": "[ENTER NAME]" },
+    { "role": "Team Rep — 12U / Elite 12U", "name": "[ENTER NAME]" }
+  ],
+  "teams": [
+    {
+      "id": "primetime-10u",
+      "name": "Primetime 10U",
+      "division": "10U",
+      "tagline": "Building fundamentals, competing with heart.",
+      "description": "Our foundational travel squad — building fundamentals, game IQ, and a love for the sport in a competitive, supportive environment.",
+      "badge": "10U",
+      "headCoach": { "name": "[ENTER COACH NAME]", "email": "[ENTER COACH EMAIL]", "bio": "" },
+      "gamechanger": { "scheduleUrl": "[ENTER GAMECHANGER SCHEDULE URL]", "statsUrl": "[ENTER GAMECHANGER STATS URL]" },
+      "ncs": { "teamUrl": "[ENTER NCS TEAM URL]" },
+      "roster": []
+    },
+    {
+      "id": "primetime-12u",
+      "name": "Primetime 12U",
+      "division": "12U",
+      "tagline": "Sharper skills. Bigger stage.",
+      "description": "Our core competitive squad, sharpening skills and tournament experience as players grow into the next level of travel softball.",
+      "badge": "12U",
+      "headCoach": { "name": "[ENTER COACH NAME]", "email": "[ENTER COACH EMAIL]", "bio": "" },
+      "gamechanger": { "scheduleUrl": "[ENTER GAMECHANGER SCHEDULE URL]", "statsUrl": "[ENTER GAMECHANGER STATS URL]" },
+      "ncs": { "teamUrl": "[ENTER NCS TEAM URL]" },
+      "roster": []
+    },
+    {
+      "id": "primetime-elite-12u",
+      "name": "Primetime Elite 12U",
+      "division": "Elite 12U",
+      "tagline": "Top-tier competition. Primetime standard.",
+      "description": "Our top competitive 12U squad — built for showcase events, elite tournament fields, and college-exposure-caliber play.",
+      "badge": "EL",
+      "headCoach": { "name": "[ENTER COACH NAME]", "email": "[ENTER COACH EMAIL]", "bio": "" },
+      "gamechanger": { "scheduleUrl": "[ENTER GAMECHANGER SCHEDULE URL]", "statsUrl": "[ENTER GAMECHANGER STATS URL]" },
+      "ncs": { "teamUrl": "[ENTER NCS TEAM URL]" },
+      "roster": []
+    }
+  ],
+  "fundraising": {
+    "intro": "Every dollar raised lowers what families pay, funds tournament travel, and helps build a program where athletes can compete, grow, and represent Primetime.",
+    "sponsors": []
+  },
+  "docs": [
+    { "name": "Registration Form", "description": "Season registration for all Primetime teams.", "url": "" },
+    { "name": "Liability Waiver", "description": "Required waiver for all rostered players.", "url": "" }
+  ],
+  "policies": {
+    "playerConduct": "Sportsmanship, effort, attendance, and respect for coaches, teammates, and opponents.",
+    "parentConduct": "Sideline conduct, communication channels with coaches, and respectful engagement with officials.",
+    "attendance": "Practice/game attendance expectations and excused absence policy.",
+    "playingTime": "Organization philosophy on playing time by age group/division.",
+    "grievance": "How concerns are raised to a coach or the board, and expected response time."
+  },
+  "bylaws": {
+    "name": "Article I — Name & Purpose",
+    "purpose": "Primetime Softball Organization exists to provide competitive travel fastpitch softball opportunities for youth athletes across its member teams.",
+    "membership": "Membership is open to players and families rostered on a Primetime team in good standing with organization policies and fee obligations.",
+    "governance": "The board consists of the President, Vice President, Treasurer, Secretary, and team representatives as outlined on the Board page.",
+    "meetings": "The board meets regularly during the season; meeting schedules and minutes are available to members upon request.",
+    "amendments": "These bylaws may be amended by majority board vote at a scheduled meeting."
+  },
+  "finances": {
+    "seasonFees": "Placeholder — list per-team season dues, what they cover (uniforms, tournament fees, facility rental), and payment plan options.",
+    "whereFundsGo": "Placeholder — travel fund, equipment, tournament entry fees, scholarships for families in need.",
+    "budgetSummary": "Placeholder — link or embed an annual budget summary reviewed by the board and treasurer."
+  },
+  "seo": {
+    "description": "Official hub for the Primetime softball organization: teams, rosters, coaching, board, fundraising, and more.",
+    "keywords": "Primetime softball, travel softball, fastpitch, 10U, 12U, Elite 12U"
+  }
+}

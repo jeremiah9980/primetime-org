@@ -1,0 +1,86 @@
+/* Primetime CMS admin dashboard styles — reuses the org's black & gold tokens
+   but is intentionally its own compact "app" layout, not a public page. */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg: #050403; --bg-2: #0b0906; --surface: rgba(255,255,255,.06); --surface-2: rgba(255,255,255,.11);
+  --text: #f9f7f1; --muted: #b9b3a4; --line: rgba(255,255,255,.14);
+  --gold: #e9c04b; --gold-2: #c9971f; --danger: #e5534b; --ok: #4caf68;
+  --radius: 16px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); color: var(--text);
+}
+.cms-header {
+  position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(16px);
+}
+.cms-header h1 { margin: 0; font-family: "Anton", sans-serif; font-size: 1.4rem; text-transform: uppercase; letter-spacing: .02em; }
+.cms-header .badge { color: var(--gold); }
+.cms-actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+.cms-btn {
+  display: inline-flex; align-items: center; gap: .4rem; padding: .6rem 1rem; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--text); font-weight: 800;
+  font-size: .8rem; cursor: pointer; text-transform: uppercase; letter-spacing: .05em;
+}
+.cms-btn:hover { background: var(--surface-2); }
+.cms-btn.primary { background: linear-gradient(135deg, var(--gold), var(--gold-2)); color: #050403; border-color: transparent; }
+.cms-btn.danger { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 40%, var(--line)); }
+.cms-shell { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 66px); }
+.cms-tabs { border-right: 1px solid var(--line); padding: 1rem .75rem; display: flex; flex-direction: column; gap: .3rem; }
+.cms-tab {
+  text-align: left; padding: .7rem .9rem; border-radius: 12px; border: 1px solid transparent; background: transparent;
+  color: var(--muted); font-weight: 800; font-size: .82rem; cursor: pointer; text-transform: uppercase; letter-spacing: .04em;
+}
+.cms-tab:hover { background: var(--surface); color: var(--text); }
+.cms-tab.active { background: var(--surface-2); color: var(--gold); border-color: var(--line); }
+.cms-panel { padding: 2rem clamp(1rem, 3vw, 3rem); max-width: 980px; }
+.cms-panel[hidden] { display: none; }
+.cms-section-title { font-family: "Anton", sans-serif; font-size: 1.6rem; text-transform: uppercase; margin: 0 0 .3rem; }
+.cms-section-sub { color: var(--muted); margin: 0 0 1.6rem; font-size: .9rem; }
+.field-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; margin-bottom: 1rem; }
+.field-grid.one { grid-template-columns: 1fr; }
+label { display: block; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: .35rem; }
+input[type=text], input[type=email], input[type=url], input[type=number], textarea, select {
+  width: 100%; padding: .7rem .85rem; border-radius: 10px; border: 1px solid var(--line);
+  background: rgba(255,255,255,.04); color: var(--text); font-family: inherit; font-size: .92rem;
+}
+textarea { min-height: 90px; resize: vertical; }
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.card-row {
+  display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; padding: 1rem;
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); margin-bottom: .75rem;
+}
+.card-row .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: .75rem; }
+.remove-btn {
+  padding: .45rem .7rem; border-radius: 8px; border: 1px solid color-mix(in srgb, var(--danger) 40%, var(--line));
+  background: transparent; color: var(--danger); cursor: pointer; font-weight: 800; font-size: .75rem;
+}
+.add-btn { margin-top: .5rem; }
+.roster-table { width: 100%; border-collapse: collapse; margin-top: .5rem; }
+.roster-table th { text-align: left; padding: .5rem; font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.roster-table td { padding: .4rem; }
+.team-select-bar { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem; }
+.status-banner {
+  position: fixed; bottom: 1.25rem; right: 1.25rem; z-index: 50; padding: .9rem 1.25rem; border-radius: 14px;
+  border: 1px solid var(--line); background: var(--bg-2); box-shadow: 0 18px 50px rgba(0,0,0,.4);
+  max-width: 380px; font-size: .85rem; display: none;
+}
+.status-banner.show { display: block; }
+.status-banner.ok { border-color: color-mix(in srgb, var(--ok) 50%, var(--line)); }
+.status-banner.error { border-color: color-mix(in srgb, var(--danger) 50%, var(--line)); }
+.status-banner pre { white-space: pre-wrap; margin: .5rem 0 0; color: var(--muted); font-size: .78rem; }
+.file-input-label {
+  display: inline-flex; align-items: center; gap: .4rem; padding: .6rem 1rem; border-radius: 999px;
+  border: 1px dashed var(--line); color: var(--muted); font-size: .8rem; cursor: pointer;
+}
+.hint { color: var(--muted); font-size: .82rem; margin: .25rem 0 1rem; }
+code { color: var(--gold); background: rgba(255,255,255,.06); padding: .1rem .35rem; border-radius: 6px; }
+@media (max-width: 860px) {
+  .cms-shell { grid-template-columns: 1fr; }
+  .cms-tabs { flex-direction: row; overflow-x: auto; border-right: none; border-bottom: 1px solid var(--line); }
+  .field-grid { grid-template-columns: 1fr; }
+}

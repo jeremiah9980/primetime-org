@@ -7,6 +7,8 @@
   <title>Primetime Softball Organization — Home</title>
   <meta name="description" content="Official hub for the Primetime softball organization: teams, rosters, coaching, board, fundraising, and more.">
   <script src="assets/js/theme-init.js"></script>
+  <script>window.PRIMETIME_CONTENT_URL = "cms/content/primetime-site.json";</script>
+  <link rel="icon" href="public/images/logos/primetime-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
@@ -18,9 +20,12 @@
 <nav class="pt-nav">
   <div class="pt-nav-inner">
     <a class="pt-brand" href="index.html">
-      <span class="pt-logo">PT</span>
+      <span class="pt-logo">
+        <img src="public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;">PT</span>
+      </span>
       <span>
-        <strong>Primetime</strong>
+        <strong data-pt-org-nickname>Primetime</strong>
         <span>Softball Organization</span>
       </span>
     </a>
@@ -48,8 +53,8 @@
   <section class="pt-hero section-pad" aria-label="Primetime Softball Organization home">
     <div class="hero-copy reveal-card">
       <p class="eyebrow">Select &amp; Travel Fastpitch Softball</p>
-      <h1>Primetime <span>Softball</span></h1>
-      <p class="hero-lede">A modern organization hub for every Primetime team — rosters, schedules, coaching staff, board governance, fundraising, and tournament tracking, all in one polished home.</p>
+      <h1><span data-pt-org-nickname>Primetime</span> <span>Softball</span></h1>
+      <p class="hero-lede" data-pt-org-mission>A modern organization hub for every Primetime team — rosters, schedules, coaching staff, board governance, fundraising, and tournament tracking, all in one polished home.</p>
       <div class="hero-actions">
         <a href="teams/primetime-10u.html" class="btn primary">Meet Our Teams</a>
         <a href="fundraising.html" class="btn ghost">Support Primetime</a>
@@ -62,24 +67,12 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="stadium-card main-mockup team-mockup">
-        <div class="mock-shell">
-          <div class="mock-toolbar"><span></span><span></span><span></span><b>primetime org hub</b></div>
-          <div class="mock-hero">
-            <div class="mock-badge">PT</div>
-            <p>Select Fastpitch</p>
-            <h2>Organization Hub</h2>
-            <div class="mock-buttons"><b>Teams</b><b>Roster</b><b>Board</b></div>
-          </div>
-          <div class="mock-panels">
-            <div><strong>3</strong><small>Teams</small></div>
-            <div><strong>10-12U</strong><small>Age Groups</small></div>
-            <div><strong>PT</strong><small>Est. Standard</small></div>
-          </div>
-        </div>
+      <div class="stadium-card logo-showcase">
+        <img class="hero-logo-img" src="public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.closest('.logo-showcase').classList.add('logo-missing');">
+        <div class="logo-fallback-badge">PRIMETIME<br>FASTPITCH</div>
       </div>
-      <div class="floating-card stat-card"><strong>PT</strong><span>Primetime</span></div>
-      <div class="floating-card roster-card-mini"><strong>3</strong><span>Competitive Teams</span></div>
+      <div class="floating-card stat-card"><strong>3</strong><span>Teams</span></div>
+      <div class="floating-card roster-card-mini"><strong>10-12U</strong><span>Age Groups</span></div>
       <div class="floating-card iq-card"><strong>Elite</strong><span>12U Standard</span></div>
     </div>
   </section>
@@ -107,28 +100,28 @@
       <p>Every Primetime team shares the same standard of coaching, culture, and competition — from first-year travel players to elite 12U competitors.</p>
     </div>
     <div class="team-grid">
-      <article class="team-card">
+      <article class="team-card" data-pt-team-info="primetime-10u">
         <span class="team-tag">10U</span>
-        <h3>Primetime 10U</h3>
-        <p>Our foundational travel squad — building fundamentals, game IQ, and a love for the sport in a competitive, supportive environment.</p>
+        <h3 data-pt-field="name">Primetime 10U</h3>
+        <p data-pt-field="description">Our foundational travel squad — building fundamentals, game IQ, and a love for the sport in a competitive, supportive environment.</p>
         <div class="hero-actions">
           <a class="btn ghost" href="teams/primetime-10u.html">Team Hub</a>
           <a class="btn ghost" href="roster/primetime-10u.html">Roster</a>
         </div>
       </article>
-      <article class="team-card">
+      <article class="team-card" data-pt-team-info="primetime-12u">
         <span class="team-tag">12U</span>
-        <h3>Primetime 12U</h3>
-        <p>Our core competitive squad, sharpening skills and tournament experience as players grow into the next level of travel softball.</p>
+        <h3 data-pt-field="name">Primetime 12U</h3>
+        <p data-pt-field="description">Our core competitive squad, sharpening skills and tournament experience as players grow into the next level of travel softball.</p>
         <div class="hero-actions">
           <a class="btn ghost" href="teams/primetime-12u.html">Team Hub</a>
           <a class="btn ghost" href="roster/primetime-12u.html">Roster</a>
         </div>
       </article>
-      <article class="team-card">
+      <article class="team-card" data-pt-team-info="primetime-elite-12u">
         <span class="team-tag">Elite 12U</span>
-        <h3>Primetime Elite 12U</h3>
-        <p>Our top competitive 12U squad — built for showcase events, elite tournament fields, and college-exposure-caliber play.</p>
+        <h3 data-pt-field="name">Primetime Elite 12U</h3>
+        <p data-pt-field="description">Our top competitive 12U squad — built for showcase events, elite tournament fields, and college-exposure-caliber play.</p>
         <div class="hero-actions">
           <a class="btn ghost" href="teams/primetime-elite-12u.html">Team Hub</a>
           <a class="btn ghost" href="roster/primetime-elite-12u.html">Roster</a>
@@ -153,19 +146,28 @@
   </section>
 
   <section class="elite-motto-banner" aria-label="Organization motto">
-    <div class="mock-badge-sm">PT</div>
+    <div class="mock-badge-sm" style="position:relative;overflow:hidden;">
+      <img src="public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:2px;" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+      <span style="display:none;width:100%;height:100%;place-items:center;color:var(--ink);font-family:var(--display);">PT</span>
+    </div>
     <div>
       <strong>Built on Teamwork.<br>Driven by Excellence.</strong>
-      <span>Primetime Softball Organization</span>
+      <span data-pt-org-name>Primetime Softball Organization</span>
     </div>
-    <div class="mock-badge-sm">PT</div>
+    <div class="mock-badge-sm" style="position:relative;overflow:hidden;">
+      <img src="public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:2px;" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+      <span style="display:none;width:100%;height:100%;place-items:center;color:var(--ink);font-family:var(--display);">PT</span>
+    </div>
   </section>
 </main>
 <footer class="elite-footer">
   <div class="elite-footer-grid">
     <div>
-      <span class="pt-logo-sm">PT</span>
-      <p>Primetime Softball Organization</p>
+      <span class="pt-logo-sm" style="width:64px;height:64px;border-radius:18px;margin-bottom:1rem;background:linear-gradient(135deg, var(--gold), var(--gold-2));">
+        <img src="public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;color:var(--ink);font-family:var(--display);">PT</span>
+      </span>
+      <p data-pt-org-name>Primetime Softball Organization</p>
       <p>Select &amp; Travel Fastpitch</p>
     </div>
     <div>
@@ -184,11 +186,13 @@
       <p><a href="fundraising.html">Sponsor / Donate</a></p>
       <p><a href="coaching.html">Coaching Staff</a></p>
       <p><a href="contact.html">Contact Us</a></p>
+      <p><a data-pt-instagram href="#" target="_blank" rel="noopener">Instagram</a> &middot; <a data-pt-facebook href="#" target="_blank" rel="noopener">Facebook</a></p>
     </div>
   </div>
   <div class="elite-footer-bottom">
-    <p>&copy; 2026 Primetime Softball Organization. All Rights Reserved.</p>
+    <p>&copy; 2026 <span data-pt-org-name>Primetime Softball Organization</span>. All Rights Reserved.</p>
   </div>
 </footer><script src="assets/js/nav.js"></script>
+<script src="assets/js/primetime-content-renderer.js"></script>
 </body>
 </html>

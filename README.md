@@ -12,34 +12,66 @@ Plus organization-level pages: `about.html`, `board.html`, `bylaws.html`, `coach
 Theme: **black & gold** ("Primetime spotlight"), with a light/dark toggle in the nav bar.
 See `BRANDING.md` for the palette.
 
+## Logo
+
+The nav, footer, homepage hero, and motto banner are all wired to display a real logo —
+they just need the file. **Drop your Primetime logo PNG at:**
+
+```
+public/images/logos/primetime-logo.png
+```
+
+Until that file exists, every one of those spots gracefully falls back to a styled "PT" /
+"PRIMETIME FASTPITCH" text badge — nothing looks broken either way. Once the file is in
+place, no code changes are needed; every page picks it up automatically. See
+`public/images/README.md` for sizing guidance (a square, transparent-background PNG works
+best for the nav/footer badge slots; the homepage hero showcase can handle a wider,
+detailed logo like a full crest).
+
+## CMS — editing content without touching code
+
+This site ships with a small CMS so board members/coaches can update rosters, coaches,
+board info, fundraising, docs, and policies without editing HTML:
+
+- **Dashboard:** `cms/admin/index.html` (open via `npx serve .`, not by double-clicking)
+- **Content file it edits:** `cms/content/primetime-site.json`
+- **Full explanation:** `docs/SPEC-primetime-cms.md`
+
+Quick version: open the dashboard, edit any tab, click **Validate**, click
+**Export for GitHub**, replace `cms/content/primetime-site.json` with the downloaded file,
+then commit and push. Every public page re-reads that file at load time.
+
 ## What this is (and isn't)
 
 This site is modeled on the same design pattern (glassmorphism cards, sticky nav, Anton +
-Inter display type, light/dark token system) used across the org's other team hubs — rebuilt
-from scratch with Primetime's own black-and-gold identity, copy, and structure reorganized as
-a multi-team **organization** site rather than a single team page.
+Inter display type, light/dark token system, JSON-file CMS + admin dashboard) used across
+the org's other team hubs — rebuilt from scratch with Primetime's own black-and-gold
+identity, copy, and structure reorganized as a multi-team **organization** site rather than
+a single team page.
 
 It does **not** include a few things found on some other team sites in this family, since
-they're custom backend/ops tooling outside the scope of a static GitHub Pages site:
-- A roster/CMS admin panel (rosters here are edited by hand in `config/teams.config.json`)
-- Live GameChanger stats/schedule syncing (placeholder panels are wired for it — see below)
-- An NCS tournament monitor/tracker backend (placeholder panel included; ask if you want a
-  real integration built)
+they're heavier custom backend/ops tooling outside the scope of a static GitHub Pages site:
+- Live GameChanger stats/schedule syncing (the CMS stores the URLs; pages link out to them
+  rather than embedding live widgets)
+- An NCS tournament monitor/tracker backend (same — link-out, not embedded live data)
+- An AI content-drafting assistant or auto-generated player profile pages
+- Any server-side auth on `/cms/admin/` — it's a static page anyone with the link can open
+
+Ask if you want any of these added — they'd layer on top of the existing content file
+cleanly.
 
 ## How to edit content
 
-- **Org info, board, theme colors, contact:** `config/org.config.json`
-- **Per-team info, coaches, GameChanger URL, rosters:** `config/teams.config.json`
-  (the roster pages read this file live via `fetch()` — add players as
-  `{ "number": "12", "name": "Jane Doe", "position": "SS", "batsThrows": "R/R" }`)
-- **Governance/policy copy:** edit the HTML directly in `board.html`, `bylaws.html`,
-  `policies.html`, `finances.html` — all placeholder text is marked in *italics*.
+- **Almost everything** (org info, board, teams, rosters, coaches, GameChanger/NCS links,
+  fundraising, sponsors, docs, policies, bylaws, finances, SEO): use the CMS at
+  `cms/admin/` — see above.
 - **Images:** drop files into `public/images/<folder>/` per `public/images/README.md`,
-  then reference them as `/images/<folder>/filename.png` in the relevant HTML.
+  referenced as `/images/<folder>/filename.png`. The logo is the one exception with a fixed
+  expected path — see the Logo section above.
 
 ## Local preview
 
-Because the roster pages use `fetch()`, you must serve the site over HTTP (not open
+Because pages `fetch()` the CMS content JSON, you must serve the site over HTTP (not open
 `index.html` directly from disk):
 
 ```bash

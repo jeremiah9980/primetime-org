@@ -318,3 +318,34 @@ html[data-theme="light"] body.pt-page::after, body.pt-page[data-theme="light"]::
 }
 html[data-theme="light"] .date-box strong,
 html[data-theme="light"] .mock-panels strong { color: var(--ink); }
+
+/* ---- Logo integration (drop /public/images/logos/primetime-logo.png in place) ---- */
+.pt-logo, .pt-logo-sm {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.pt-logo img, .pt-logo-sm img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 3px;
+}
+.pt-logo .pt-logo-fallback, .pt-logo-sm .pt-logo-fallback { display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; }
+
+.logo-showcase {
+  display: grid; place-items: center; padding: clamp(2rem, 5vw, 3.5rem);
+  min-height: 420px;
+  background:
+    radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--gold) 22%, transparent), transparent 60%),
+    linear-gradient(145deg, color-mix(in srgb, var(--silver) 14%, transparent), var(--surface));
+}
+.hero-logo-img {
+  max-width: 100%; width: min(460px, 100%); height: auto;
+  filter: drop-shadow(0 25px 60px rgba(0,0,0,.45)) drop-shadow(0 0 60px color-mix(in srgb, var(--gold) 35%, transparent));
+}
+.logo-fallback-badge {
+  display: none; text-align: center; font-family: var(--display); font-size: clamp(2rem,5vw,3.4rem);
+  color: var(--gold); text-transform: uppercase; letter-spacing: .03em; line-height: 1.05;
+  text-shadow: 0 0 40px color-mix(in srgb, var(--gold) 45%, transparent);
+}
+.logo-showcase.logo-missing .logo-fallback-badge { display: block; }
+.logo-showcase.logo-missing .hero-logo-img { display: none; }

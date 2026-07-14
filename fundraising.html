@@ -7,6 +7,8 @@
   <title>Fundraising — Primetime Softball Organization</title>
   <meta name="description" content="Support Primetime Softball Organization through sponsorships and fundraising.">
   <script src="assets/js/theme-init.js"></script>
+  <script>window.PRIMETIME_CONTENT_URL = "cms/content/primetime-site.json";</script>
+  <link rel="icon" href="public/images/logos/primetime-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
@@ -18,9 +20,12 @@
 <nav class="pt-nav">
   <div class="pt-nav-inner">
     <a class="pt-brand" href="index.html">
-      <span class="pt-logo">PT</span>
+      <span class="pt-logo">
+        <img src="public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;">PT</span>
+      </span>
       <span>
-        <strong>Primetime</strong>
+        <strong data-pt-org-nickname>Primetime</strong>
         <span>Softball Organization</span>
       </span>
     </a>
@@ -48,7 +53,7 @@
   <div class="section-heading">
     <p class="eyebrow">Fundraising</p>
     <h2>Support Primetime Softball.</h2>
-    <p>Every dollar raised lowers what families pay, funds tournament travel, and helps build a program where athletes can compete, grow, and represent Primetime.</p>
+    <p data-pt-fundraising-intro>Every dollar raised lowers what families pay, funds tournament travel, and helps build a program where athletes can compete, grow, and represent Primetime.</p>
   </div>
   <div class="timeline">
     <article><span>1</span><h3>Team Sponsors</h3><p>Local business sponsorships and sponsor recognition on our site and gear.</p></article>
@@ -60,19 +65,22 @@
     <p class="eyebrow">Our Sponsors</p>
     <h2>Thank you to our partners.</h2>
   </div>
-  <div class="media-grid" style="max-width:900px;margin:0 auto;">
+  <div class="media-grid" style="max-width:900px;margin:0 auto;" data-pt-sponsors>
     <div class="media-tile"></div><div class="media-tile"></div><div class="media-tile"></div>
   </div>
   <div class="hero-actions center" style="margin-top:2.5rem;">
-    <a class="btn primary" href="mailto:board@primetimesoftball.example">Become a Sponsor</a>
+    <a class="btn primary" data-pt-board-email href="mailto:board@primetimesoftball.example">Become a Sponsor</a>
     <a class="btn ghost" href="finances.html">See Where Funds Go</a>
   </div>
 </main>
 <footer class="elite-footer">
   <div class="elite-footer-grid">
     <div>
-      <span class="pt-logo-sm">PT</span>
-      <p>Primetime Softball Organization</p>
+      <span class="pt-logo-sm" style="width:64px;height:64px;border-radius:18px;margin-bottom:1rem;background:linear-gradient(135deg, var(--gold), var(--gold-2));">
+        <img src="public/images/logos/primetime-logo.png" alt="Primetime Fastpitch logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="pt-logo-fallback" style="display:none;color:var(--ink);font-family:var(--display);">PT</span>
+      </span>
+      <p data-pt-org-name>Primetime Softball Organization</p>
       <p>Select &amp; Travel Fastpitch</p>
     </div>
     <div>
@@ -91,11 +99,13 @@
       <p><a href="fundraising.html">Sponsor / Donate</a></p>
       <p><a href="coaching.html">Coaching Staff</a></p>
       <p><a href="contact.html">Contact Us</a></p>
+      <p><a data-pt-instagram href="#" target="_blank" rel="noopener">Instagram</a> &middot; <a data-pt-facebook href="#" target="_blank" rel="noopener">Facebook</a></p>
     </div>
   </div>
   <div class="elite-footer-bottom">
-    <p>&copy; 2026 Primetime Softball Organization. All Rights Reserved.</p>
+    <p>&copy; 2026 <span data-pt-org-name>Primetime Softball Organization</span>. All Rights Reserved.</p>
   </div>
 </footer><script src="assets/js/nav.js"></script>
+<script src="assets/js/primetime-content-renderer.js"></script>
 </body>
 </html>

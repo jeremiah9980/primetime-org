@@ -41,16 +41,15 @@ Either way, GitHub will give you a URL like `https://jeremiah9980.github.io/prim
 
 ## 3. Before you share the link
 
-- [ ] Edit `config/org.config.json` — real location, contact emails, board names
-- [ ] Edit `config/teams.config.json` — real coaches, GameChanger URLs, and rosters (the
-      roster pages render straight from this file)
+- [ ] Drop your logo at `public/images/logos/primetime-logo.png` — nav, footer, homepage
+      hero, and motto banner all pick it up automatically, no code changes needed
+- [ ] Open `cms/admin/` (via `npx serve .`) and fill in real org info, board names, team
+      coaches, GameChanger/NCS links, and rosters, then Export and replace
+      `cms/content/primetime-site.json`
+- [ ] Run `node scripts/validate-primetime-content.mjs` and resolve any remaining
+      `[ENTER ...]` placeholder warnings before going live
 - [ ] Replace placeholder copy (marked in *italics*) on `board.html`, `bylaws.html`,
-      `finances.html`, `policies.html`, `about.html`
-- [ ] Drop a logo into `public/images/logos/` and swap the "PT" badge in the header/hero
-      markup for an `<img>` tag pointing to it (search each HTML file for `pt-logo` /
-      `mock-badge` and follow the pattern already used)
-- [ ] Add real contact emails/social links (search for `[ENTER ...]` placeholders across
-      the repo — every one should be replaced before going live)
+      `finances.html`, `policies.html`, `about.html` — or edit the equivalent CMS tab instead
 
 ## 4. Optional custom domain
 
