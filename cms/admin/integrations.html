@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Primetime CMS — Integration Center</title>
+  <link rel="stylesheet" href="integrations.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="./">
+      <span>P</span>
+      <div><strong>Primetime CMS</strong><small>Integration Center</small></div>
+    </a>
+    <label class="team-picker">Managing team
+      <select id="activeTeam"></select>
+    </label>
+    <nav>
+      <button class="active" data-view="overview">📊 Overview</button>
+      <button data-view="ncs">🔍 NCS Roster Import</button>
+      <button data-view="roster">👥 Roster Mapping</button>
+      <button data-view="gamechanger">📈 GameChanger Stats</button>
+      <button data-view="tournaments">🏆 Tournament Sync</button>
+      <button data-view="trackers">🗓 Game Trackers</button>
+      <button data-view="diagnostics">🩺 Diagnostics</button>
+      <button data-view="settings">⚙️ Integration Settings</button>
+    </nav>
+    <div class="side-actions">
+      <a href="./">← Standard CMS</a>
+      <button id="exportConfig">Export configuration</button>
+      <button id="exportSiteJson">Export site JSON</button>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow" id="teamEyebrow">Primetime</p>
+        <h1 id="pageTitle">Integration Overview</h1>
+        <p id="pageDescription">Connect roster, statistics, tournaments, and live game data.</p>
+      </div>
+      <div class="header-actions">
+        <span id="saveStatus">Loaded</span>
+        <button id="saveLocal">💾 Save draft</button>
+      </div>
+    </header>
+
+    <section id="overview" class="view active">
+      <div class="metrics">
+        <article><span>NCS roster</span><strong id="ncsMetric">Not connected</strong></article>
+        <article><span>GameChanger</span><strong id="gcMetric">Not connected</strong></article>
+        <article><span>Tournament teams</span><strong id="teamMetric">0</strong></article>
+        <article><span>Sync interval</span><strong id="intervalMetric">15 min</strong></article>
+      </div>
+      <div class="grid two">
+        <article class="card"><h2>Integration readiness</h2><div id="readiness"></div></article>
+        <article class="card"><h2>Recent sync activity</h2><div id="activity" class="activity"></div></article>
+      </div>
+      <article class="card warning">
+        <h2>Safe test mode included</h2>
+        <p>Demo mode exercises the complete roster, mapping, statistics, tournament, and tracker workflow without
+        calling NCS or GameChanger. Turn demo mode off only after the integration Worker is deployed and authorized
+        adapters are configured.</p>
+      </article>
+    </section>
+
+    <section id="ncs" class="view">
+      <div class="section-head">
+        <div>
+          <h2>NCS team finder and roster import</h2>
+          <p>Search the fastpitch team directory, review the roster, then import selected players into the managing team.</p>
+        </div>
+        <button id="searchNcs" class="primary">🔍 Search NCS</button>
+      </div>
+      <article class="card">
+        <div class="form-grid">
+          <label>Base search URL<input data-config="ncs.baseSearchUrl"></label>
+          <label>Season ID<input data-config="ncs.seasonId"></label>
+          <label>Team search<input id="ncsQuery" placeholder="Primetime or team ID"></label>
+          <label>Age division<input id="ncsDivision" placeholder="10U / 12U"></label>
+          <label>Country<input data-config="ncs.country"></label>
+          <label>State<input id="ncsState"></label>
+          <label>NCS team ID<input id="ncsTeamId" placeholder="Selected after search"></label>
+        </div>
+      </article>
+      <div class="grid two">
+        <article class="card"><h3>Search results</h3><div id="ncsResults" class="list empty">Run a search to browse matching teams.</div></article>
+        <article class="card">
+          <div class="section-head compact"><h3>Roster preview</h3><button id="importSelected" class="primary" disabled>Import selected</button></div>
+          <div id="ncsRosterPreview" class="list empty">Select an NCS team to preview its roster.</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="roster" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Roster editor and identity mapping</h2>
+          <p>Modify every player slot and map each website player to NCS and GameChanger records.</p>
+        </div>
+        <button id="addPlayer" class="primary">＋ Add player</button>
+      </div>
+      <div id="playerEditor" class="player-grid"></div>
+    </section>
+
+    <section id="gamechanger" class="view">
+      <div class="section-head">
+        <div>
+          <h2>GameChanger statistics</h2>
+          <p>Configure the team identifier, fetch authorized stats, and resolve player matches before publishing profiles.</p>
+        </div>
+        <button id="syncStats" class="primary">↻ Sync stats</button>
+      </div>
+      <article class="card">
+        <div class="form-grid">
+          <label>GameChanger team ID<input id="gcTeamId" placeholder="Team ID or web.gc.com team URL"></label>
+          <label>Season ID<input id="gcSeasonId" placeholder="Optional season identifier"></label>
+          <label>Integration API base URL<input data-config="apiBaseUrl" placeholder="https://your-worker.workers.dev"></label>
+          <label>Stats visibility
+            <select id="gcVisibility">
+              <option value="public">Public</option>
+              <option value="profiles">Player profiles only</option>
+              <option value="private">Private</option>
+            </select>
+          </label>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Player matching</h3>
+        <p class="muted">Match confidence uses exact IDs first, then normalized name and jersey number. All uncertain matches require manual approval.</p>
+        <div id="matchTable" class="table-wrap"></div>
+      </article>
+    </section>
+
+    <section id="tournaments" class="view">
+      <div class="section-head">
+        <div>
+          <h2>NCS tournament registration sync</h2>
+          <p>Add one or more NCS team IDs or team URLs. Registered events are imported and kept current through the integration service.</p>
+        </div>
+        <button id="addTournamentTeam" class="primary">＋ Add team ID</button>
+      </div>
+      <div id="tournamentTeams"></div>
+      <article class="card">
+        <div class="section-head compact"><h3>Imported events</h3><button id="syncEvents" class="primary">↻ Sync now</button></div>
+        <div id="eventTable" class="table-wrap"></div>
+      </article>
+    </section>
+
+    <section id="trackers" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Per-event tournament trackers</h2>
+          <p>Each imported tournament receives its own schedule and bracket tracker.</p>
+        </div>
+      </div>
+      <div id="trackerGrid" class="tracker-grid"></div>
+    </section>
+
+    <section id="diagnostics" class="view">
+      <div class="section-head">
+        <div>
+          <h2>End-to-end diagnostics</h2>
+          <p>Run every integration workflow and review each individual result.</p>
+        </div>
+        <button id="runAllTests" class="primary">▶ Run all tests</button>
+      </div>
+      <div id="diagnosticSummary" class="metrics"></div>
+      <article class="card"><div id="diagnosticResults" class="activity"><div>No diagnostics run yet.</div></div></article>
+    </section>
+
+    <section id="settings" class="view">
+      <div class="grid two">
+        <article class="card">
+          <h2>Service configuration</h2>
+          <div class="form-stack">
+            <label class="check"><input data-config="demoMode" type="checkbox"> Use safe demo data</label>
+            <label>Integration API base URL<input data-config="apiBaseUrl" placeholder="https://your-worker.workers.dev"></label>
+            <label>Sync interval (minutes)<input data-config="sync.intervalMinutes" type="number" min="15"></label>
+            <label>Timezone<input data-config="sync.timezone"></label>
+            <label class="check"><input data-config="sync.enabled" type="checkbox"> Enable scheduled synchronization</label>
+          </div>
+        </article>
+        <article class="card">
+          <h2>Data policy</h2>
+          <div class="form-stack">
+            <label class="check"><input data-config="policy.requireManualMatchApproval" type="checkbox"> Require approval for uncertain player matches</label>
+            <label class="check"><input data-config="policy.preserveManualEdits" type="checkbox"> Preserve manual roster edits during imports</label>
+            <label class="check"><input data-config="policy.publishStats" type="checkbox"> Publish imported statistics</label>
+            <label class="check"><input data-config="policy.archiveRemovedPlayers" type="checkbox"> Archive rather than delete removed players</label>
+          </div>
+        </article>
+      </div>
+      <article class="card">
+        <h2>Connection tests</h2>
+        <div class="connection-grid">
+          <button data-test="health">Test integration API</button>
+          <button data-test="ncs">Test NCS adapter</button>
+          <button data-test="gamechanger">Test GameChanger adapter</button>
+        </div>
+        <pre id="testOutput"></pre>
+      </article>
+    </section>
+  </main>
+
+  <template id="playerTemplate">
+    <article class="player-card">
+      <div class="photo-box">
+        <img data-field="photo" alt="">
+        <label class="upload">Photo path<input data-input="photo" placeholder="public/images/players/player.jpg"></label>
+      </div>
+      <div class="player-fields">
+        <label>Name<input data-input="name"></label>
+        <div class="form-grid">
+          <label>Number<input data-input="number"></label>
+          <label>Position<input data-input="position"></label>
+          <label>NCS player ID<input data-input="ncsPlayerId"></label>
+          <label>GameChanger player ID<input data-input="gameChangerPlayerId"></label>
+        </div>
+        <label>Bio<textarea data-input="bio"></textarea></label>
+        <div class="player-actions"><span data-match-status></span><button data-remove class="danger">Remove</button></div>
+      </div>
+    </article>
+  </template>
+
+  <script src="integrations.js"></script>
+</body>
+</html>
