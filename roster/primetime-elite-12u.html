@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050403">
+  <title>Primetime Elite 12U Roster — Primetime Softball Organization</title>
+  <meta name="description" content="Full team roster for Primetime Elite 12U.">
+  <script src="../assets/js/theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/theme-primetime.css">
+</head>
+<body class="pt-page">
+<div class="ambient ambient-one"></div>
+<div class="ambient ambient-two"></div>
+<nav class="pt-nav">
+  <div class="pt-nav-inner">
+    <a class="pt-brand" href="../index.html">
+      <span class="pt-logo">PT</span>
+      <span>
+        <strong>Primetime</strong>
+        <span>Softball Organization</span>
+      </span>
+    </a>
+    <div class="pt-links">
+      <a href="../index.html" class="">Home</a>
+      <div class="pt-dropdown">
+        <a href="../teams/primetime-10u.html" class="">Teams &#9662;</a>
+        <div class="pt-dropdown-menu">
+          <a href="../teams/primetime-10u.html">Primetime 10U</a><a href="../teams/primetime-12u.html">Primetime 12U</a><a href="../teams/primetime-elite-12u.html">Primetime Elite 12U</a>
+        </div>
+      </div>
+      <a href="../roster/primetime-10u.html" class="active">Roster</a>
+      <a href="../coaching.html" class="">Coaching</a>
+      <a href="../board.html" class="">Board</a>
+      <a href="../fundraising.html" class="">Fundraising</a>
+      <a href="../docs.html" class="">Docs</a>
+      <a href="../contact.html" class="">Contact</a>
+    </div>
+    <button class="theme-toggle" aria-pressed="false" aria-label="Toggle light and dark theme">
+      <span class="theme-toggle-icon">&#127769;</span><span class="theme-toggle-label">Dark</span>
+    </button>
+  </div>
+</nav>
+<main class="section-pad">
+  <div class="section-heading left">
+    <p class="eyebrow">Primetime Elite 12U &bull; Elite 12U</p>
+    <h2>Team Roster</h2>
+    <p>Jersey numbers, positions, and player profiles for Primetime Elite 12U. Coaches: replace the placeholder rows below in <code>config/teams.config.json</code> — the table renders directly from that file.</p>
+  </div>
+
+  <div class="elite-card" style="max-width:1100px;margin:0 auto;">
+    <table id="roster-table" style="width:100%;border-collapse:collapse;">
+      <thead>
+        <tr style="text-align:left;border-bottom:1px solid var(--line);">
+          <th style="padding:.75rem;color:var(--muted);text-transform:uppercase;font-size:.72rem;letter-spacing:.08em;">#</th>
+          <th style="padding:.75rem;color:var(--muted);text-transform:uppercase;font-size:.72rem;letter-spacing:.08em;">Player</th>
+          <th style="padding:.75rem;color:var(--muted);text-transform:uppercase;font-size:.72rem;letter-spacing:.08em;">Position</th>
+          <th style="padding:.75rem;color:var(--muted);text-transform:uppercase;font-size:.72rem;letter-spacing:.08em;">Bats/Throws</th>
+        </tr>
+      </thead>
+      <tbody id="roster-body">
+        <tr><td colspan="4" style="padding:1rem;color:var(--muted);">Loading roster&hellip;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hero-actions center" style="margin-top:2rem;">
+    <a class="btn ghost" href="../teams/primetime-elite-12u.html">Back to Team Hub</a>
+  </div>
+</main>
+<script>
+fetch('../config/teams.config.json').then(r => r.json()).then(data => {
+  var team = data.teams.find(function (x) { return x.id === 'primetime-elite-12u'; });
+  var body = document.getElementById('roster-body');
+  if (!team || !team.roster || !team.roster.length) {
+    body.innerHTML = '<tr><td colspan="4" style="padding:1rem;color:var(--muted);">Roster coming soon &mdash; add players in config/teams.config.json.</td></tr>';
+    return;
+  }
+  body.innerHTML = team.roster.map(function (p) {
+    return '<tr style="border-bottom:1px solid var(--line);">' +
+      '<td style="padding:.75rem;font-weight:800;color:var(--gold);">#' + (p.number || '--') + '</td>' +
+      '<td style="padding:.75rem;">' + (p.name || 'Player') + '</td>' +
+      '<td style="padding:.75rem;color:var(--muted);">' + (p.position || 'TBD') + '</td>' +
+      '<td style="padding:.75rem;color:var(--muted);">' + (p.batsThrows || '&mdash;') + '</td>' +
+    '</tr>';
+  }).join('');
+}).catch(function () {
+  document.getElementById('roster-body').innerHTML = '<tr><td colspan="4" style="padding:1rem;color:var(--muted);">Could not load roster data.</td></tr>';
+});
+</script>
+<footer class="elite-footer">
+  <div class="elite-footer-grid">
+    <div>
+      <span class="pt-logo-sm">PT</span>
+      <p>Primetime Softball Organization</p>
+      <p>Select &amp; Travel Fastpitch</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <p><a href="../index.html">Home</a></p>
+      <p><a href="../about.html">About</a></p>
+      <p><a href="../board.html">Board</a></p>
+      <p><a href="../docs.html">Docs &amp; Policies</a></p>
+    </div>
+    <div>
+      <h4>Teams</h4>
+      <p><a href="../teams/primetime-10u.html">Primetime 10U</a></p><p><a href="../teams/primetime-12u.html">Primetime 12U</a></p><p><a href="../teams/primetime-elite-12u.html">Primetime Elite 12U</a></p>
+    </div>
+    <div>
+      <h4>Get Involved</h4>
+      <p><a href="../fundraising.html">Sponsor / Donate</a></p>
+      <p><a href="../coaching.html">Coaching Staff</a></p>
+      <p><a href="../contact.html">Contact Us</a></p>
+    </div>
+  </div>
+  <div class="elite-footer-bottom">
+    <p>&copy; 2026 Primetime Softball Organization. All Rights Reserved.</p>
+  </div>
+</footer><script src="../assets/js/nav.js"></script>
+</body>
+</html>
