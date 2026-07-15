@@ -7,6 +7,9 @@
   "use strict";
 
   var KEY = "primetime_integrations_v1";
+  // Deployed from integrations-worker/ — scrapes playncs.com server-side and
+  // returns JSON with CORS (the NCS site has no API and no CORS headers).
+  var DEFAULT_API = "https://primetime-integrations.jeremiahcargill.workers.dev";
   var FALLBACK_TEAMS = [
     { id: "primetime-10u", name: "Primetime 10U" },
     { id: "primetime-12u", name: "Primetime 12U" },
@@ -20,10 +23,10 @@
   }
 
   var defaults = {
-    demoMode: true,
-    apiBaseUrl: "",
+    demoMode: false,
+    apiBaseUrl: DEFAULT_API,
     activeTeam: "primetime-10u",
-    ncs: { baseSearchUrl: "https://playncs.com/fastpitch/", seasonId: "", query: "", division: "", country: "US", state: "TX" },
+    ncs: { baseSearchUrl: "https://playncs.com/fastpitch/Teams", seasonId: "33", query: "", division: "", country: "US", state: "TX" },
     sync: { intervalMinutes: 15, timezone: "America/Chicago", enabled: false },
     policy: { requireManualMatchApproval: true, preserveManualEdits: true, publishStats: true, archiveRemovedPlayers: true },
     teams: {},
@@ -33,6 +36,10 @@
   var state;
   try { state = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { state = null; }
   state = Object.assign(structuredClone(defaults), state || {});
+  // Migrate drafts saved before the live NCS adapter existed: they have no API
+  // URL and demo mode on, so point them at the deployed Worker and go live.
+  if (!state.apiBaseUrl) { state.apiBaseUrl = DEFAULT_API; state.demoMode = false; }
+  if (!state.ncs.seasonId) state.ncs.seasonId = "33";
   var siteTeams = FALLBACK_TEAMS;
 
   var $ = function (s) { return document.querySelector(s); };
@@ -87,7 +94,11 @@
     options = options || {};
     options.headers = Object.assign({ "Content-Type": "application/json" }, options.headers || {});
     return fetch(base + path, options).then(function (r) {
-      if (!r.ok) return r.text().then(function (t) { throw new Error(t || ("HTTP " + r.status)); });
+      if (!r.ok) return r.text().then(function (t) {
+        var msg = t || ("HTTP " + r.status);
+        try { msg = JSON.parse(t).error || msg; } catch (e) { /* not JSON */ }
+        throw new Error(msg);
+      });
       return r.json();
     });
   }
