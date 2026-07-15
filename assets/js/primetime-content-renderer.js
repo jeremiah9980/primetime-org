@@ -10,23 +10,6 @@
 (function () {
   var url = window.PRIMETIME_CONTENT_URL || "cms/content/primetime-site.json";
 
-  function installPrimaryLogo() {
-    document.querySelectorAll("img[src*='primetime-logo.png']").forEach(function (img) {
-      img.src = img.getAttribute("src").replace("primetime-logo.png", "primetime-logo.svg");
-      img.style.display = "block";
-      var fallback = img.nextElementSibling;
-      if (fallback && fallback.classList.contains("pt-logo-fallback")) fallback.style.display = "none";
-      var showcase = img.closest(".logo-showcase");
-      if (showcase) showcase.classList.remove("logo-missing");
-    });
-    document.querySelectorAll("link[rel~='icon'][href*='primetime-logo.png']").forEach(function (link) {
-      link.href = link.getAttribute("href").replace("primetime-logo.png", "primetime-logo.svg");
-      link.type = "image/svg+xml";
-    });
-  }
-
-  installPrimaryLogo();
-
   function text(el, value) {
     if (el && value !== undefined && value !== null && value !== "") el.textContent = value;
   }
