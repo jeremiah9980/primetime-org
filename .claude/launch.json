@@ -6,6 +6,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", ".", "-l", "3000"],
       "port": 3000
+    },
+    {
+      "name": "buzz-site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/jeremiahcargill/repos/Buzz-Elite-2035", "-l", "3001"],
+      "port": 3001
     }
   ]
 }

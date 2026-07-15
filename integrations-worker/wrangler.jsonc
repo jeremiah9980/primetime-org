@@ -3,5 +3,12 @@
   "name": "primetime-integrations",
   "main": "src/index.js",
   "compatibility_date": "2026-07-01",
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  "d1_databases": [
+    {
+      "binding": "GC_STATS",
+      "database_name": "gc_stats",
+      "database_id": "57f88039-9433-45be-bcb0-ef7c6f5a16f1"
+    }
+  ]
 }

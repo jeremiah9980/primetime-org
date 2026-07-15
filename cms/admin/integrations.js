@@ -280,15 +280,27 @@
     renderMatches();
   }
 
+  function statSummary(p) {
+    if (!p.stats) return "—";
+    var bat = p.stats.sections ? p.stats.sections.batting : p.stats;
+    if (!bat) return "—";
+    var avg = bat.AVG != null ? Number(bat.AVG).toFixed(3).replace(/^0/, "") : (bat.avg != null ? String(bat.avg).replace(/^0/, "") : null);
+    var h = bat.H != null ? bat.H : bat.hits;
+    var rbi = bat.RBI != null ? bat.RBI : bat.rbi;
+    if (avg == null && h == null) return "—";
+    return "AVG " + (avg || "—") + " · " + (h || 0) + " H · " + (rbi || 0) + " RBI" + (bat.games ? " (" + bat.games + " G)" : "");
+  }
+
   function renderMatches() {
     var b = teamBucket();
     var rows = b.players.map(function (p) {
+      var status = p.gcMatch ? "Matched via gc_stats (" + p.gcMatch.confidence + ")" : (p.gameChangerPlayerId ? "Approved" : "Needs review");
       return "<tr><td>" + esc(p.name) + "</td><td>#" + esc(p.number) + "</td><td>" + esc(p.ncsPlayerId || "—") +
         '</td><td><input value="' + esc(p.gameChangerPlayerId || "") + '" data-gc-player="' + esc(p.id) + '" placeholder="GameChanger player ID"></td><td>' +
-        (p.gameChangerPlayerId ? "Approved" : "Needs review") + "</td></tr>";
+        esc(statSummary(p)) + "</td><td>" + esc(status) + "</td></tr>";
     }).join("");
-    $("#matchTable").innerHTML = "<table><thead><tr><th>Website player</th><th>#</th><th>NCS ID</th><th>GameChanger ID</th><th>Status</th></tr></thead><tbody>" +
-      (rows || '<tr><td colspan="5">Import the roster first.</td></tr>') + "</tbody></table>";
+    $("#matchTable").innerHTML = "<table><thead><tr><th>Website player</th><th>#</th><th>NCS ID</th><th>GameChanger ID</th><th>Season stats</th><th>Status</th></tr></thead><tbody>" +
+      (rows || '<tr><td colspan="6">Import the roster first.</td></tr>') + "</tbody></table>";
     $$("[data-gc-player]").forEach(function (x) {
       x.oninput = function () {
         var p = teamBucket().players.find(function (y) { return y.id === x.dataset.gcPlayer; });
@@ -312,11 +324,26 @@
   function syncStats() {
     var b = teamBucket();
     adapters.syncStats(b).then(function (result) {
+      var matchByPlayer = {};
+      (result.matches || []).forEach(function (m) { matchByPlayer[m.playerId] = m; });
       b.players = b.players.map(function (p) {
-        var s = result.stats && result.stats[p.gameChangerPlayerId];
-        return s ? Object.assign({}, p, { stats: s }) : p;
+        var m = matchByPlayer[p.id];
+        var out = Object.assign({}, p);
+        if (m && m.matched) {
+          out.gcMatch = { confidence: m.confidence, rosterTeam: m.rosterTeam };
+          // Backfill the NCS id from a confident gc_stats name match.
+          if (!out.ncsPlayerId && m.matchedNcsPlayerId && m.confidence !== "partial") out.ncsPlayerId = m.matchedNcsPlayerId;
+        }
+        var s = (m && result.stats && result.stats[m.matchedNcsPlayerId]) ||
+                (result.stats && result.stats[p.ncsPlayerId]) ||
+                (result.stats && result.stats[p.gameChangerPlayerId]);
+        if (s) out.stats = s;
+        return out;
       });
-      logActivity("GameChanger stats synchronized");
+      var matched = (result.matches || []).filter(function (m) { return m.matched; }).length;
+      logActivity(result.source === "gc_stats"
+        ? "gc_stats sync: " + matched + "/" + b.players.length + " players matched"
+        : "GameChanger stats synchronized");
       save("Stats synchronized"); renderPlayers();
     }).catch(function (e) { alert(e.message); });
   }

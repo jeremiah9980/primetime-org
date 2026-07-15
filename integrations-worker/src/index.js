@@ -14,7 +14,14 @@
  *   GET  /api/ncs/teams/:id/events
  *   POST /api/ncs/events/sync   {teamIds: []}   -> merged registered events for the teams
  *   POST /api/ncs/events/:id/sync               -> refresh one event from its details page
- *   POST /api/gamechanger/sync                  -> 501 (GameChanger has no public API)
+ *   POST /api/gamechanger/sync                  -> cross-reference + stats from the gc_stats D1 database
+ *   POST /api/gcstats/match  {players: []}      -> match website players to gc_stats records
+ *   GET  /api/gcstats/teams                     -> GameChanger team registry from gc_stats
+ *
+ * GameChanger has no public API. The gc_stats D1 database (populated by the
+ * separate GameChanger scraping pipeline) keys season stats by NCS player id,
+ * so it doubles as the NCS <-> GameChanger cross-reference: exact NCS-id joins
+ * first, then normalized name (+ jersey number) matching for the rest.
  */
 
 const NCS_BASE = "https://playncs.com";
@@ -218,6 +225,97 @@ async function handleOneEventSync(eventId) {
   });
 }
 
+/* ---------------- gc_stats D1 cross-reference ---------------- */
+
+const normName = (s) => String(s || "").toLowerCase().replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
+
+/** Load the whole cross-reference set (small tables) in one round trip each. */
+async function loadGcStats(env) {
+  if (!env.GC_STATS) throw new Error("GC_STATS D1 binding is not configured on this Worker.");
+  const [players, totals, teams] = await Promise.all([
+    env.GC_STATS.prepare("SELECT player_id, name, roster_team FROM players").all(),
+    env.GC_STATS.prepare("SELECT player_id, gc_url, season, section, games, stats, updated_at FROM season_totals").all(),
+    env.GC_STATS.prepare("SELECT gc_url, gc_name, season, ncs_teams FROM teams").all(),
+  ]);
+  const statsByPlayer = {};
+  for (const row of totals.results) {
+    const bucket = (statsByPlayer[row.player_id] ??= { gcUrl: row.gc_url, season: row.season, updatedAt: row.updated_at, sections: {} });
+    try { bucket.sections[row.section] = { games: row.games, ...JSON.parse(row.stats) }; } catch (e) { /* skip bad row */ }
+  }
+  return { players: players.results, statsByPlayer, teams: teams.results };
+}
+
+/**
+ * Match one website player against gc_stats players.
+ * Confidence: "exact" (NCS id), "name" (full normalized name), "partial" (last name + first initial).
+ */
+function matchPlayer(sitePlayer, gcPlayers) {
+  if (sitePlayer.ncsPlayerId) {
+    const hit = gcPlayers.find((p) => p.player_id === String(sitePlayer.ncsPlayerId));
+    if (hit) return { ...hit, confidence: "exact" };
+  }
+  const n = normName(sitePlayer.name);
+  if (!n) return null;
+  const full = gcPlayers.filter((p) => normName(p.name) === n);
+  if (full.length === 1) return { ...full[0], confidence: "name" };
+  const parts = n.split(" ");
+  const last = parts[parts.length - 1], firstInitial = parts[0]?.[0];
+  const partial = gcPlayers.filter((p) => {
+    const gp = normName(p.name).split(" ");
+    return gp[gp.length - 1] === last && gp[0]?.[0] === firstInitial;
+  });
+  if (partial.length === 1) return { ...partial[0], confidence: "partial" };
+  return null;
+}
+
+async function handleGcMatch(request, env) {
+  const body = await request.json().catch(() => ({}));
+  const sitePlayers = body.players || [];
+  const { players: gcPlayers, statsByPlayer } = await loadGcStats(env);
+  const matches = sitePlayers.map((sp) => {
+    const hit = matchPlayer(sp, gcPlayers);
+    return {
+      playerId: sp.id ?? null,
+      name: sp.name ?? "",
+      ncsPlayerId: sp.ncsPlayerId || "",
+      matched: !!hit,
+      matchedNcsPlayerId: hit ? hit.player_id : "",
+      matchedName: hit ? hit.name : "",
+      rosterTeam: hit ? hit.roster_team : "",
+      confidence: hit ? hit.confidence : "none",
+      stats: hit ? statsByPlayer[hit.player_id] || null : null,
+    };
+  });
+  return json({ ok: true, source: "gc_stats", matches });
+}
+
+async function handleGcSync(request, env) {
+  const body = await request.json().catch(() => ({}));
+  const sitePlayers = body.players || [];
+  const { players: gcPlayers, statsByPlayer, teams } = await loadGcStats(env);
+  const stats = {};
+  const matches = [];
+  for (const sp of sitePlayers) {
+    const hit = matchPlayer(sp, gcPlayers);
+    if (hit && statsByPlayer[hit.player_id]) stats[hit.player_id] = statsByPlayer[hit.player_id];
+    matches.push({
+      playerId: sp.id ?? null,
+      name: sp.name ?? "",
+      matched: !!hit,
+      matchedNcsPlayerId: hit ? hit.player_id : "",
+      confidence: hit ? hit.confidence : "none",
+      rosterTeam: hit ? hit.roster_team : "",
+      hasStats: !!(hit && statsByPlayer[hit.player_id]),
+    });
+  }
+  return json({ ok: true, source: "gc_stats", teams, matches, stats });
+}
+
+async function handleGcTeams(env) {
+  const { teams } = await loadGcStats(env);
+  return json(teams.map((t) => ({ ...t, ncs_teams: JSON.parse(t.ncs_teams || "[]") })));
+}
+
 async function handleMeta() {
   const html = await fetchNcs("/fastpitch/Teams");
   return json({
@@ -227,27 +325,32 @@ async function handleMeta() {
   });
 }
 
-function handleHealth(params) {
+async function handleHealth(params, env) {
   const adapter = params.get("adapter") || "health";
   if (adapter === "gamechanger") {
-    return json({
-      adapter,
-      ok: false,
-      mode: "live",
-      detail: "GameChanger has no public API. Map player IDs manually in Roster Mapping, or keep demo mode for stats.",
-    });
+    if (!env.GC_STATS) {
+      return json({ adapter, ok: false, mode: "live", detail: "GC_STATS D1 binding missing; GameChanger stats unavailable." });
+    }
+    try {
+      const row = await env.GC_STATS.prepare("SELECT (SELECT COUNT(*) FROM players) p, (SELECT COUNT(*) FROM season_totals) s").first();
+      return json({ adapter, ok: true, mode: "live", detail: `GameChanger adapter backed by gc_stats D1 (${row.p} players, ${row.s} season stat rows; keyed by NCS player id).` });
+    } catch (e) {
+      return json({ adapter, ok: false, mode: "live", detail: "gc_stats D1 query failed: " + e.message });
+    }
   }
   return json({ adapter, ok: true, mode: "live", detail: adapter === "ncs" ? `NCS adapter ready (scraping ${NCS_BASE})` : "Integration API reachable" });
 }
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: CORS });
     const url = new URL(request.url);
     const p = url.pathname.replace(/\/+$/, "");
     try {
-      if (p === "/api/health") return handleHealth(url.searchParams);
+      if (p === "/api/health") return handleHealth(url.searchParams, env);
       if (p === "/api/ncs/meta") return handleMeta();
+      if (p === "/api/gcstats/teams") return handleGcTeams(env);
+      if (p === "/api/gcstats/match" && request.method === "POST") return handleGcMatch(request, env);
       if (p === "/api/ncs/teams") return handleTeamSearch(url.searchParams);
 
       let m;
@@ -264,8 +367,8 @@ export default {
         const id = extractId(m[1]);
         return id ? handleOneEventSync(id) : json({ error: "Invalid event id" }, 400);
       }
-      if (p === "/api/gamechanger/sync") {
-        return json({ error: "GameChanger has no public API; stats sync is not available. Use Roster Mapping to record GameChanger player IDs manually." }, 501);
+      if (p === "/api/gamechanger/sync" && request.method === "POST") {
+        return handleGcSync(request, env);
       }
       return json({ error: `Unknown endpoint ${p}` }, 404);
     } catch (e) {

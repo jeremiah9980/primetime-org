@@ -128,7 +128,7 @@
       </article>
       <article class="card">
         <h3>Player matching</h3>
-        <p class="muted">Match confidence uses exact IDs first, then normalized name and jersey number. All uncertain matches require manual approval.</p>
+        <p class="muted">Sync cross-references players against the gc_stats database (Cloudflare D1): exact NCS player IDs first, then normalized names. Confident matches backfill NCS IDs and pull season stats; uncertain matches stay flagged for manual review.</p>
         <div id="matchTable" class="table-wrap"></div>
       </article>
     </section>
