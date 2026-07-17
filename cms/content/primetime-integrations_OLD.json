@@ -1,0 +1,610 @@
+{
+  "demoMode": false,
+  "apiBaseUrl": "https://primetime-integrations.jeremiahcargill.workers.dev",
+  "activeTeam": "primetime-12u",
+  "ncs": {
+    "baseSearchUrl": "https://playncs.com/fastpitch/Teams",
+    "seasonId": "30",
+    "query": "primetime",
+    "division": "",
+    "country": "US",
+    "state": "TX"
+  },
+  "sync": {
+    "intervalMinutes": 15,
+    "timezone": "America/Chicago",
+    "enabled": true
+  },
+  "policy": {
+    "requireManualMatchApproval": true,
+    "preserveManualEdits": true,
+    "publishStats": true,
+    "archiveRemovedPlayers": true
+  },
+  "teams": {
+    "primetime-10u": {
+      "players": [],
+      "tournamentTeamIds": [],
+      "events": [],
+      "ncsTeamId": "87980",
+      "gamechanger": {
+        "teamId": "",
+        "seasonId": "",
+        "visibility": "public"
+      }
+    },
+    "primetime-elite-12u": {
+      "players": [
+        {
+          "id": "player-1784075437423-818b3",
+          "name": "Sierra Rodriguez",
+          "number": "3",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "274682",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "274682",
+            "number": "3",
+            "name": "Sierra Rodriguez",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/274682/sierra-rodriguez"
+          }
+        },
+        {
+          "id": "player-1784075437423-4030c",
+          "name": "Mila Ruiz",
+          "number": "4",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "274681",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "274681",
+            "number": "4",
+            "name": "Mila Ruiz",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/274681/mila-ruiz"
+          }
+        },
+        {
+          "id": "player-1784075437423-056b1",
+          "name": "Harper Ripps",
+          "number": "5",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "274692",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "274692",
+            "number": "5",
+            "name": "Harper Ripps",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/274692/harper-ripps"
+          }
+        },
+        {
+          "id": "player-1784075437423-97b46",
+          "name": "Peyton Ramos",
+          "number": "7",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "275281",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "275281",
+            "number": "7",
+            "name": "Peyton Ramos",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/275281/peyton-ramos"
+          }
+        },
+        {
+          "id": "player-1784075437423-26759",
+          "name": "Mal&#233;na Maddi",
+          "number": "8",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "225317",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "225317",
+            "number": "8",
+            "name": "Mal&#233;na Maddi",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/225317/malena-maddi"
+          }
+        },
+        {
+          "id": "player-1784075437423-36d4c",
+          "name": "Adelynn Kierstead",
+          "number": "9",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "274683",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "274683",
+            "number": "9",
+            "name": "Adelynn Kierstead",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/274683/adelynn-kierstead"
+          }
+        },
+        {
+          "id": "player-1784075437423-29599",
+          "name": "Raelyn Moreno",
+          "number": "11",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "358092",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "358092",
+            "number": "11",
+            "name": "Raelyn Moreno",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/358092/raelyn-moreno"
+          }
+        },
+        {
+          "id": "player-1784075437423-4b7fb",
+          "name": "Braelynn Adame",
+          "number": "13",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "197861",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "197861",
+            "number": "13",
+            "name": "Braelynn Adame",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/197861/braelynn-adame"
+          }
+        },
+        {
+          "id": "player-1784075437423-9a658",
+          "name": "Jada Morales",
+          "number": "22",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "274687",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "274687",
+            "number": "22",
+            "name": "Jada Morales",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/274687/jada-morales"
+          }
+        },
+        {
+          "id": "player-1784075437423-49253",
+          "name": "Mylah Elizondo",
+          "number": "23",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "274684",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "274684",
+            "number": "23",
+            "name": "Mylah Elizondo",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/274684/mylah-elizondo"
+          }
+        },
+        {
+          "id": "player-1784075437423-c8f93",
+          "name": "Mariah Esparza",
+          "number": "24",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "424253",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "424253",
+            "number": "24",
+            "name": "Mariah Esparza",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/424253/mariah-esparza"
+          }
+        },
+        {
+          "id": "player-1784075437423-33e4a",
+          "name": "Celestia Gomez",
+          "number": "98",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "274709",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "274709",
+            "number": "98",
+            "name": "Celestia Gomez",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/274709/celestia-gomez"
+          }
+        },
+        {
+          "id": "player-1784075437423-f287f",
+          "name": "Renesmee Gomez",
+          "number": "99",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "274690",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "274690",
+            "number": "99",
+            "name": "Renesmee Gomez",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/274690/renesmee-gomez"
+          }
+        }
+      ],
+      "tournamentTeamIds": [
+        "74146"
+      ],
+      "events": [],
+      "ncsTeamId": "74146",
+      "gamechanger": {
+        "teamId": "",
+        "seasonId": "",
+        "visibility": "public"
+      }
+    },
+    "primetime-12u": {
+      "players": [
+        {
+          "id": "player-1784075372991-fdc2b",
+          "name": "Brianna Castillo",
+          "number": "",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "266717",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "266717",
+            "number": "",
+            "name": "Brianna Castillo",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/266717/brianna-castillo"
+          }
+        },
+        {
+          "id": "player-1784075372991-3bf0a",
+          "name": "Ariyanna Gonzalez",
+          "number": "",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "223904",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "223904",
+            "number": "",
+            "name": "Ariyanna Gonzalez",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/223904/ariyanna-gonzalez"
+          }
+        },
+        {
+          "id": "player-1784075372991-8f31e",
+          "name": "Aubree Rangel",
+          "number": "1",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "167314",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "167314",
+            "number": "1",
+            "name": "Aubree Rangel",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/167314/aubree-rangel"
+          }
+        },
+        {
+          "id": "player-1784075372991-c9f69",
+          "name": "Andy Rangel",
+          "number": "3",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "167315",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "167315",
+            "number": "3",
+            "name": "Andy Rangel",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/167315/andy-rangel"
+          }
+        },
+        {
+          "id": "player-1784075372991-ca8b6",
+          "name": "Arianna Padron",
+          "number": "5",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "167317",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "167317",
+            "number": "5",
+            "name": "Arianna Padron",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/167317/arianna-padron"
+          }
+        },
+        {
+          "id": "player-1784075372991-cab31",
+          "name": "Zoey Arabella Vela",
+          "number": "7",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "468062",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "468062",
+            "number": "7",
+            "name": "Zoey Arabella Vela",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/468062/zoey-arabella-vela"
+          }
+        },
+        {
+          "id": "player-1784075372991-6fd46",
+          "name": "Khloe Lazo",
+          "number": "10",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "207125",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "207125",
+            "number": "10",
+            "name": "Khloe Lazo",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/207125/khloe-lazo"
+          }
+        },
+        {
+          "id": "player-1784075372991-3b58f",
+          "name": "Jordynn Wright",
+          "number": "12",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "305440",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "305440",
+            "number": "12",
+            "name": "Jordynn Wright",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/305440/jordynn-wright"
+          }
+        },
+        {
+          "id": "player-1784075372991-09f4e",
+          "name": "Lyla Terrazas",
+          "number": "15",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "225746",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "225746",
+            "number": "15",
+            "name": "Lyla Terrazas",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/225746/lyla-terrazas"
+          }
+        },
+        {
+          "id": "player-1784075372991-afd15",
+          "name": "Elena Alejandra Grimaldo",
+          "number": "17",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "468056",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "468056",
+            "number": "17",
+            "name": "Elena Alejandra Grimaldo",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/468056/elena-alejandra-grimaldo"
+          }
+        },
+        {
+          "id": "player-1784075372991-3f226",
+          "name": "Ella Gamble",
+          "number": "24",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "272590",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "272590",
+            "number": "24",
+            "name": "Ella Gamble",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/272590/ella-gamble"
+          }
+        },
+        {
+          "id": "player-1784075372991-4e8ff",
+          "name": "Sophia Texas Hill",
+          "number": "30",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "340721",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "340721",
+            "number": "30",
+            "name": "Sophia Texas Hill",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/340721/sophia-texas-hill"
+          }
+        },
+        {
+          "id": "player-1784075372991-cbdaf",
+          "name": "Zeriyah Campos",
+          "number": "42",
+          "position": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "412707",
+          "gameChangerPlayerId": "",
+          "ncsSource": {
+            "id": "412707",
+            "number": "42",
+            "name": "Zeriyah Campos",
+            "position": "",
+            "url": "https://playncs.com/fastpitch/Players/Details/412707/zeriyah-campos"
+          }
+        }
+      ],
+      "tournamentTeamIds": [
+        "71355"
+      ],
+      "events": [
+        {
+          "id": "12683",
+          "name": "NCS 10TH ANNUAL MIDNIGHT MAYHEM MVP EVENT",
+          "startDate": "Jul 25-26",
+          "location": "GRAND PRAIRIE, MIDLOTHIAN, CEDAR HILL, ENNIS, CORSICANA, TX",
+          "status": "Double Points Qualifier",
+          "url": "https://playncs.com/fastpitch/Events/Details/12683/ncs-10th-annual-midnight-mayhem-mvp-event",
+          "teamId": "71355",
+          "lastSyncedAt": "2026-07-15T01:06:45.415Z"
+        }
+      ],
+      "ncsTeamId": "71355",
+      "gamechanger": {
+        "teamId": "560mQaj2c3aH",
+        "seasonId": "",
+        "visibility": "public"
+      }
+    }
+  },
+  "activity": [
+    {
+      "message": "Imported 13 NCS roster players",
+      "at": "7/14/2026, 7:29:32 PM",
+      "team": "primetime-12u"
+    },
+    {
+      "message": "Imported 13 NCS roster players",
+      "at": "7/14/2026, 7:30:37 PM",
+      "team": "primetime-elite-12u"
+    },
+    {
+      "message": "Diagnostics run: 6/8 passed",
+      "at": "7/14/2026, 7:33:03 PM",
+      "team": "primetime-12u"
+    },
+    {
+      "message": "Imported 13 NCS roster players",
+      "at": "7/14/2026, 7:40:48 PM",
+      "team": "primetime-12u"
+    },
+    {
+      "message": "Exported site JSON with integration rosters",
+      "at": "7/14/2026, 7:40:58 PM",
+      "team": "primetime-12u"
+    },
+    {
+      "message": "Imported 13 NCS roster players",
+      "at": "7/14/2026, 7:42:05 PM",
+      "team": "primetime-12u"
+    },
+    {
+      "message": "Diagnostics run: 6/8 passed",
+      "at": "7/14/2026, 7:42:49 PM",
+      "team": "primetime-12u"
+    },
+    {
+      "message": "Synchronized 1 tournament events",
+      "at": "7/14/2026, 7:44:50 PM",
+      "team": "primetime-12u"
+    },
+    {
+      "message": "Synchronized 0 tournament events",
+      "at": "7/14/2026, 7:45:34 PM",
+      "team": "primetime-elite-12u"
+    },
+    {
+      "message": "Synchronized 0 tournament events",
+      "at": "7/14/2026, 7:45:35 PM",
+      "team": "primetime-elite-12u"
+    },
+    {
+      "message": "Synchronized 0 tournament events",
+      "at": "7/14/2026, 7:45:35 PM",
+      "team": "primetime-elite-12u"
+    },
+    {
+      "message": "Diagnostics run: 5/8 passed",
+      "at": "7/14/2026, 7:45:41 PM",
+      "team": "primetime-elite-12u"
+    },
+    {
+      "message": "Exported site JSON with integration rosters",
+      "at": "7/14/2026, 7:45:52 PM",
+      "team": "primetime-elite-12u"
+    },
+    {
+      "message": "Diagnostics run: 6/8 passed",
+      "at": "7/14/2026, 7:48:02 PM",
+      "team": "primetime-12u"
+    },
+    {
+      "message": "Exported site JSON with integration rosters",
+      "at": "7/14/2026, 7:48:09 PM",
+      "team": "primetime-12u"
+    },
+    {
+      "message": "Diagnostics run: 6/8 passed",
+      "at": "7/14/2026, 8:06:32 PM",
+      "team": "primetime-12u"
+    },
+    {
+      "message": "Synchronized 1 tournament events",
+      "at": "7/14/2026, 8:06:44 PM",
+      "team": "primetime-12u"
+    },
+    {
+      "message": "Synchronized 1 tournament events",
+      "at": "7/14/2026, 8:06:45 PM",
+      "team": "primetime-12u"
+    }
+  ]
+}

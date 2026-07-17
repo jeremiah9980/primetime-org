@@ -17,12 +17,30 @@
     }
   },
   "board": [
-    { "role": "President", "name": "[ENTER NAME]" },
-    { "role": "Vice President", "name": "[ENTER NAME]" },
-    { "role": "Treasurer", "name": "[ENTER NAME]" },
-    { "role": "Secretary", "name": "[ENTER NAME]" },
-    { "role": "Team Rep — 10U", "name": "[ENTER NAME]" },
-    { "role": "Team Rep — 12U / Elite 12U", "name": "[ENTER NAME]" }
+    {
+      "role": "President",
+      "name": "[ENTER NAME]"
+    },
+    {
+      "role": "Vice President",
+      "name": "[ENTER NAME]"
+    },
+    {
+      "role": "Treasurer",
+      "name": "[ENTER NAME]"
+    },
+    {
+      "role": "Secretary",
+      "name": "[ENTER NAME]"
+    },
+    {
+      "role": "Team Rep — 10U",
+      "name": "[ENTER NAME]"
+    },
+    {
+      "role": "Team Rep — 12U / Elite 12U",
+      "name": "[ENTER NAME]"
+    }
   ],
   "teams": [
     {
@@ -32,10 +50,141 @@
       "tagline": "Building fundamentals, competing with heart.",
       "description": "Our foundational travel squad — building fundamentals, game IQ, and a love for the sport in a competitive, supportive environment.",
       "badge": "10U",
-      "headCoach": { "name": "[ENTER COACH NAME]", "email": "[ENTER COACH EMAIL]", "bio": "" },
-      "gamechanger": { "scheduleUrl": "[ENTER GAMECHANGER SCHEDULE URL]", "statsUrl": "[ENTER GAMECHANGER STATS URL]" },
-      "ncs": { "teamUrl": "[ENTER NCS TEAM URL]" },
-      "roster": []
+      "headCoach": {
+        "name": "[ENTER COACH NAME]",
+        "email": "[ENTER COACH EMAIL]",
+        "bio": ""
+      },
+      "gamechanger": {
+        "scheduleUrl": "[ENTER GAMECHANGER SCHEDULE URL]",
+        "statsUrl": "[ENTER GAMECHANGER STATS URL]"
+      },
+      "ncs": {
+        "teamUrl": "[ENTER NCS TEAM URL]",
+        "teamId": "87980"
+      },
+      "roster": [
+        {
+          "number": "",
+          "name": "Avery Ainsworth",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "435073",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Evelyn Bond",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "472129",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Hazel Garcia",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "435068",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Jazlyn Garcia",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "435069",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Alyssa Germain",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "384085",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Addison Grace",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "438266",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Presley Graves",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "435054",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Emma Hall",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "361889",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Nicolette Harvey",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "423631",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Juliana Hernandez",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "323641",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Gloria Ramirez",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "502462",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Ashtyn Villanueva",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "299647",
+          "gameChangerPlayerId": ""
+        }
+      ]
     },
     {
       "id": "primetime-12u",
@@ -44,10 +193,151 @@
       "tagline": "Sharper skills. Bigger stage.",
       "description": "Our core competitive squad, sharpening skills and tournament experience as players grow into the next level of travel softball.",
       "badge": "12U",
-      "headCoach": { "name": "[ENTER COACH NAME]", "email": "[ENTER COACH EMAIL]", "bio": "" },
-      "gamechanger": { "scheduleUrl": "[ENTER GAMECHANGER SCHEDULE URL]", "statsUrl": "[ENTER GAMECHANGER STATS URL]" },
-      "ncs": { "teamUrl": "[ENTER NCS TEAM URL]" },
-      "roster": []
+      "headCoach": {
+        "name": "[ENTER COACH NAME]",
+        "email": "[ENTER COACH EMAIL]",
+        "bio": ""
+      },
+      "gamechanger": {
+        "scheduleUrl": "[ENTER GAMECHANGER SCHEDULE URL]",
+        "statsUrl": "[ENTER GAMECHANGER STATS URL]"
+      },
+      "ncs": {
+        "teamUrl": "[ENTER NCS TEAM URL]",
+        "teamId": "71355"
+      },
+      "roster": [
+        {
+          "number": "",
+          "name": "Brianna Castillo",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "266717",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Ariyanna Gonzalez",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "223904",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "1",
+          "name": "Aubree Rangel",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "167314",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "3",
+          "name": "Andy Rangel",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "167315",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "5",
+          "name": "Arianna Padron",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "167317",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "7",
+          "name": "Zoey Arabella Vela",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "468062",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "10",
+          "name": "Khloe Lazo",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "207125",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "12",
+          "name": "Jordynn Wright",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "305440",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "15",
+          "name": "Lyla Terrazas",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "225746",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "17",
+          "name": "Elena Alejandra Grimaldo",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "468056",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "24",
+          "name": "Ella Gamble",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "272590",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "30",
+          "name": "Sophia Texas Hill",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "340721",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "42",
+          "name": "Zeriyah Campos",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "412707",
+          "gameChangerPlayerId": ""
+        }
+      ]
     },
     {
       "id": "primetime-elite-12u",
@@ -56,10 +346,141 @@
       "tagline": "Top-tier competition. Primetime standard.",
       "description": "Our top competitive 12U squad — built for showcase events, elite tournament fields, and college-exposure-caliber play.",
       "badge": "EL",
-      "headCoach": { "name": "[ENTER COACH NAME]", "email": "[ENTER COACH EMAIL]", "bio": "" },
-      "gamechanger": { "scheduleUrl": "[ENTER GAMECHANGER SCHEDULE URL]", "statsUrl": "[ENTER GAMECHANGER STATS URL]" },
-      "ncs": { "teamUrl": "[ENTER NCS TEAM URL]" },
-      "roster": []
+      "headCoach": {
+        "name": "[ENTER COACH NAME]",
+        "email": "[ENTER COACH EMAIL]",
+        "bio": ""
+      },
+      "gamechanger": {
+        "scheduleUrl": "[ENTER GAMECHANGER SCHEDULE URL]",
+        "statsUrl": "[ENTER GAMECHANGER STATS URL]"
+      },
+      "ncs": {
+        "teamUrl": "[ENTER NCS TEAM URL]",
+        "teamId": "87980"
+      },
+      "roster": [
+        {
+          "number": "",
+          "name": "Avery Ainsworth",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "435073",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Evelyn Bond",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "472129",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Hazel Garcia",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "435068",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Jazlyn Garcia",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "435069",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Alyssa Germain",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "384085",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Addison Grace",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "438266",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Presley Graves",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "435054",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Emma Hall",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "361889",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Nicolette Harvey",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "423631",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Juliana Hernandez",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "323641",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Gloria Ramirez",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "502462",
+          "gameChangerPlayerId": ""
+        },
+        {
+          "number": "",
+          "name": "Ashtyn Villanueva",
+          "position": "",
+          "batsThrows": "",
+          "photo": "",
+          "bio": "",
+          "ncsPlayerId": "299647",
+          "gameChangerPlayerId": ""
+        }
+      ]
     }
   ],
   "fundraising": {
@@ -67,8 +488,16 @@
     "sponsors": []
   },
   "docs": [
-    { "name": "Registration Form", "description": "Season registration for all Primetime teams.", "url": "" },
-    { "name": "Liability Waiver", "description": "Required waiver for all rostered players.", "url": "" }
+    {
+      "name": "Registration Form",
+      "description": "Season registration for all Primetime teams.",
+      "url": ""
+    },
+    {
+      "name": "Liability Waiver",
+      "description": "Required waiver for all rostered players.",
+      "url": ""
+    }
   ],
   "policies": {
     "playerConduct": "Sportsmanship, effort, attendance, and respect for coaches, teammates, and opponents.",
